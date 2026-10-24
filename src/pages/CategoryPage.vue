@@ -1,51 +1,185 @@
 <template>
   <main class="category-page">
-    <p v-if="loading">Gerichte werden geladen ...</p>
+    <div v-if="loading" class="page-status">
+      Speisekarte wird geladen ...
+    </div>
 
-    <p v-else-if="error">{{ error }}</p>
+    <div v-else-if="error" class="page-status" role="alert">
+      <p>{{ error }}</p>
+
+      <RouterLink
+        :to="{ path: '/', hash: '#menu' }"
+        class="status-link"
+      >
+        Zurück zur Speisekarte
+      </RouterLink>
+    </div>
 
     <template v-else-if="category">
-      <header class="category-header">
-        <span lang="ar" dir="rtl">
-          {{ category.nameAr }}
-        </span>
+      <!-- Decorative category hero -->
+      <header class="category-hero">
+        <div class="hero-pattern"></div>
 
-        <h1>{{ category.name }}</h1>
-        <p>{{ category.description }}</p>
+        <div class="hero-content">
+          <svg
+            class="hero-ornament"
+            viewBox="0 0 200 65"
+            aria-hidden="true"
+          >
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-linecap="round"
+            >
+              <path
+                d="M100 56 C86 41 89 21 100 7
+                   C111 21 114 41 100 56Z"
+              />
+              <path
+                d="M100 56 C73 53 61 32 73 18
+                   C87 12 92 31 81 36"
+              />
+              <path
+                d="M100 56 C127 53 139 32 127 18
+                   C113 12 108 31 119 36"
+              />
+              <path
+                d="M73 31 C50 14 34 23 39 38
+                   M127 31 C150 14 166 23 161 38"
+              />
+              <path
+                d="M100 56 C72 61 51 49 39 38
+                   M100 56 C128 61 149 49 161 38"
+              />
+            </g>
+          </svg>
+
+          <span
+            class="hero-arabic"
+            lang="ar"
+            dir="rtl"
+          >
+            {{ category.nameAr || 'قائمة الطعام' }}
+          </span>
+
+          <h1>{{ category.name }}</h1>
+
+          <div class="hero-divider">
+            <span></span>
+            <span class="divider-flower">✥</span>
+            <span></span>
+          </div>
+
+          <p>
+            {{ category.description || 'Eine Reise durch die Aromen Syriens.' }}
+          </p>
+        </div>
       </header>
 
-      <div class="dishes-grid">
-        <article
-          v-for="dish in dishes"
-          :key="dish._id"
-          class="dish-card"
-        >
-          <img
-            v-if="dish.image"
-            :src="imageUrl(dish.image)"
-            :alt="dish.name"
-            loading="lazy"
-          />
+      <!-- Dishes -->
+      <section class="dishes-section">
+        <div class="dishes-container">
+          <RouterLink
+            :to="{ path: '/', hash: '#menu' }"
+            class="back-link"
+          >
+            <ArrowLeft :size="18" />
+            Zurück zur Speisekarte
+          </RouterLink>
 
-          <h2>{{ dish.name }}</h2>
-          <p>{{ dish.description }}</p>
+          <div v-if="dishes.length" class="dishes-list">
+            <article
+              v-for="(dish, index) in dishes"
+              :key="dish._id"
+              class="dish-card"
+              :class="{ reversed: index % 2 !== 0 }"
+            >
+              <div class="dish-image">
+                <img
+                  v-if="dish.image"
+                  :src="imageUrl(dish.image)"
+                  :alt="dish.name"
+                  loading="lazy"
+                />
+              </div>
 
-          <span v-if="dish.price != null">
-            {{ dish.price.toFixed(2) }} €
+              <div class="dish-content">
+                <!-- <div class="content-decoration">
+                  <span class="little-leaf">❧</span>
+                  <span class="decoration-line"></span>
+                </div> -->
+
+                <span
+                  v-if="dish.nameAr"
+                  class="dish-arabic"
+                  lang="ar"
+                  dir="rtl"
+                >
+                  {{ dish.nameAr }}
+                </span>
+
+                <h2>{{ dish.name }}</h2>
+
+                <div class="dish-divider">
+                  <span></span>
+                  <span>✥</span>
+                  <span></span>
+                </div>
+
+                <p>{{ dish.description }}</p>
+
+                <span
+                  v-if="dish.price != null"
+                  class="dish-price"
+                >
+                  {{ Number(dish.price).toFixed(2) }} €
+                </span>
+              </div>
+            </article>
+          </div>
+
+          <p v-else class="empty-message">
+            Für diese Kategorie sind noch keine Gerichte eingetragen.
+          </p>
+        </div>
+      </section>
+
+      <!-- Catering CTA -->
+      <section class="catering-cta">
+        <div class="cta-content">
+          <span class="cta-arabic" lang="ar" dir="rtl">
+            من مطبخ عواطف
           </span>
-        </article>
-      </div>
 
-      <p v-if="!dishes.length">
-        Für diese Kategorie sind noch keine Gerichte eingetragen.
-      </p>
+          <h2>
+            Ein besonderer Anlass verdient
+            besonderes Essen.
+          </h2>
+
+          <p>
+            Lassen Sie uns gemeinsam ein unvergessliches
+            Catering-Erlebnis gestalten.
+          </p>
+
+          <RouterLink
+            :to="{ path: '/', hash: '#contact' }"
+            class="cta-button"
+          >
+            Catering anfragen
+            <ArrowUpRight :size="19" />
+          </RouterLink>
+        </div>
+      </section>
     </template>
   </main>
 </template>
 
 
+
 <script setup>
 import { ref, watch } from 'vue'
+import { ArrowLeft, ArrowUpRight } from 'lucide-vue-next'
 import { sanity, urlFor } from '../services/sanity'
 
 const props = defineProps({
@@ -60,52 +194,68 @@ const dishes = ref([])
 const loading = ref(true)
 const error = ref('')
 
+let requestId = 0
+
+const query = `
+  *[_type == "category" && slug.current == $slug][0] {
+    _id,
+    name,
+    nameAr,
+    description,
+    image
+  }
+`
+
+const dishesQuery = `
+  *[
+    _type == "dish" &&
+    category._ref == $categoryId &&
+    available != false
+  ] | order(order asc, name asc) {
+    _id,
+    name,
+    nameAr,
+    description,
+    image,
+    price
+  }
+`
+
 async function loadCategory(slug) {
+  const currentRequest = ++requestId
+
   loading.value = true
   error.value = ''
   category.value = null
   dishes.value = []
 
   try {
-    const query = `
-      *[_type == "category" && slug.current == $slug][0] {
-        _id,
-        name,
-        nameAr,
-        description,
-        image
-      }
-    `
-
     const result = await sanity.fetch(query, { slug })
 
+    if (currentRequest !== requestId) return
+
     if (!result) {
-      error.value = 'Kategorie nicht gefunden.'
+      error.value = 'Diese Kategorie wurde nicht gefunden.'
       return
     }
 
-    category.value = result
+    const resultDishes = await sanity.fetch(dishesQuery, {
+      categoryId: result._id
+    })
 
-    dishes.value = await sanity.fetch(
-      `*[
-        _type == "dish" &&
-        category._ref == $categoryId &&
-        available == true
-      ] | order(order asc, name asc) {
-        _id,
-        name,
-        nameAr,
-        description,
-        image,
-        price
-      }`,
-      { categoryId: result._id }
-    )
+    if (currentRequest !== requestId) return
+
+    category.value = result
+    dishes.value = resultDishes
   } catch (err) {
-    console.error(err)
-    error.value = 'Inhalte konnten nicht geladen werden.'
+    if (currentRequest !== requestId) return
+
+    console.error('Sanity Fehler:', err)
+    error.value = 'Die Gerichte konnten nicht geladen werden.'
   } finally {
-    loading.value = false
+    if (currentRequest === requestId) {
+      loading.value = false
+    }
   }
 }
 
@@ -116,78 +266,508 @@ watch(
 )
 
 function imageUrl(image) {
-  return image?.asset
-    ? urlFor(image).width(700).auto('format').url()
-    : ''
+  if (!image?.asset) return ''
+
+  return urlFor(image)
+    .width(1100)
+    .height(800)
+    .fit('crop')
+    .auto('format')
+    .url()
 }
 </script>
-
 
 <style scoped>
 .category-page {
   min-height: 100vh;
-  padding: 150px 6% 90px;
   background: #f7f0e3;
   color: #06483e;
 }
 
-.category-header {
+.page-status {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 150px 20px 80px;
   text-align: center;
-  margin-bottom: 50px;
-}
-
-.category-header span {
-  font-family: 'Amiri', serif;
-  font-size: 30px;
-  color: #b58b50;
-}
-
-.category-header h1 {
   font-family: Georgia, serif;
-  font-size: clamp(40px, 5vw, 65px);
-  font-weight: 400;
 }
 
-.dishes-grid {
-  display: grid;
-  grid-template-columns: repeat(
-    3,
-    minmax(0, 1fr)
-  );
-  gap: 25px;
-  max-width: 1250px;
+.status-link {
+  color: #a47d46;
+}
+
+/* HERO */
+
+.category-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 135px 24px 65px;
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      #0a5649,
+      #032f29 85%
+    );
+  color: #f7f0e3;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: .11;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 42px,
+      #d6b478 43px,
+      transparent 44px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0,
+      transparent 42px,
+      #d6b478 43px,
+      transparent 44px
+    );
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.hero-ornament {
+  display: block;
+  width: 190px;
+  height: 65px;
+  margin: 0 auto 12px;
+  color: #d6b478;
+}
+
+.hero-arabic {
+  display: block;
+  color: #d6b478;
+  font-family: 'Amiri', serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.5;
+}
+
+.category-hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 6px 0 22px;
+}
+
+.hero-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: #d6b478;
+}
+
+.hero-divider > span:first-child,
+.hero-divider > span:last-child {
+  width: 70px;
+  height: 1px;
+  background: #d6b478;
+}
+
+.divider-flower {
+  font-size: 21px;
+}
+
+.category-hero p {
+  max-width: 600px;
+  margin: auto;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* DISHES SECTION */
+
+.dishes-section {
+  position: relative;
+  padding: 55px 6% 110px;
+  background: #f7f0e3;
+}
+
+.dishes-container {
+  max-width: 1180px;
   margin: auto;
 }
 
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 38px;
+  color: #8c6a3e;
+  text-decoration: none;
+  font-size: 14px;
+  transition: gap .25s ease;
+}
+
+.back-link:hover {
+  gap: 15px;
+}
+
+.dishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ALTERNATING CARDS */
+
 .dish-card {
-  background: white;
+  position: relative;
+  display: grid;
+  grid-template-columns: 49% 51%;
+  min-height: 295px;
+  background: #fff9ef;
+  border: 1px solid #c7a46a;
   border-radius: 18px;
   overflow: hidden;
-  padding-bottom: 25px;
+  box-shadow: 0 10px 35px rgba(60, 40, 20, .06);
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
 }
 
-.dish-card img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
+.dish-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(60, 40, 20, .12);
 }
 
-.dish-card h2,
-.dish-card p,
-.dish-card span {
+.dish-card.reversed .dish-image {
+  order: 2;
+}
+
+.dish-image {
+  min-height: 295px;
+  background: #e4d3b8;
+  overflow: hidden;
+}
+
+.dish-image img {
   display: block;
-  margin: 15px 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
 }
+
+.dish-card:hover .dish-image img {
+  transform: scale(1.045);
+}
+
+.dish-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 35px clamp(25px, 4vw, 65px);
+  overflow: hidden;
+}
+
+.dish-content::after {
+  content: '❀';
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 180px;
+  line-height: 1;
+  color: rgba(199, 164, 106, .12);
+  pointer-events: none;
+}
+
+.reversed .dish-content::after {
+  right: auto;
+  left: -25px;
+}
+
+.content-decoration {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  color: #b58b50;
+}
+
+.little-leaf {
+  font-size: 25px;
+  line-height: 1;
+}
+
+.decoration-line {
+  width: 110px;
+  height: 1px;
+  background: #c7a46a;
+}
+
+.dish-arabic {
+  position: relative;
+  z-index: 1;
+  display: block;
+  color: #b58b50;
+  font-family: 'Amiri', serif;
+  font-size: 28px;
+  line-height: 1.5;
+}
+
+.dish-content h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #06483e;
+  font-family: Georgia, serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.dish-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 17px 0;
+  color: #b58b50;
+}
+
+.dish-divider span:first-child,
+.dish-divider span:last-child {
+  width: 50px;
+  height: 1px;
+  background: #c7a46a;
+}
+
+.dish-divider span:nth-child(2) {
+  font-size: 14px;
+}
+
+.dish-content p {
+  position: relative;
+  z-index: 1;
+  max-width: 440px;
+  margin: 0;
+  color: #5b5147;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.dish-price {
+  margin-top: 18px;
+  color: #a47d46;
+  font-family: Georgia, serif;
+  font-size: 18px;
+}
+
+.empty-message {
+  padding: 70px 20px;
+  text-align: center;
+  font-family: Georgia, serif;
+  color: #5b5147;
+}
+
+/* CATERING CTA */
+
+.catering-cta {
+  position: relative;
+  padding: 90px 6% 100px;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      #0c5b4e,
+      #032f29 85%
+    );
+  color: #fff8eb;
+  text-align: center;
+  overflow: hidden;
+}
+
+.catering-cta::before,
+.catering-cta::after {
+  content: '❀';
+  position: absolute;
+  font-size: 280px;
+  line-height: 1;
+  color: rgba(214, 180, 120, .12);
+  pointer-events: none;
+}
+
+.catering-cta::before {
+  left: -80px;
+  bottom: -100px;
+}
+
+.catering-cta::after {
+  right: -80px;
+  top: -100px;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: auto;
+}
+
+.cta-arabic {
+  display: block;
+  font-family: 'Amiri', serif;
+  font-size: 28px;
+  color: #d6b478;
+}
+
+.catering-cta h2 {
+  margin: 15px 0 20px;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.catering-cta p {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 28px;
+  border-radius: 30px;
+  background: #d6b478;
+  color: #063b32;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform .2s ease,
+    background .2s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  background: #edce92;
+}
+
+/* TABLET */
 
 @media (max-width: 900px) {
-  .dishes-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .dish-card {
+    grid-template-columns: 45% 55%;
+    min-height: 260px;
+  }
+
+  .dish-image {
+    min-height: 260px;
+  }
+
+  .dish-content {
+    padding: 28px;
+  }
+
+  .dish-content h2 {
+    font-size: 30px;
   }
 }
 
-@media (max-width: 600px) {
-  .dishes-grid {
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .category-hero {
+    min-height: 340px;
+    padding: 125px 20px 55px;
+  }
+
+  .hero-ornament {
+    width: 145px;
+  }
+
+  .category-hero h1 {
+    font-size: 3.1rem;
+  }
+
+  .category-hero p {
+    font-size: 15px;
+  }
+
+  .dishes-section {
+    padding: 35px 5% 70px;
+  }
+
+  .back-link {
+    margin-bottom: 28px;
+  }
+
+  .dish-card {
     grid-template-columns: 1fr;
+  }
+
+  .dish-card.reversed .dish-image {
+    order: 0;
+  }
+
+  .dish-image {
+    height: 230px;
+    min-height: 0;
+  }
+
+  .dish-content {
+    padding: 28px 25px 32px;
+  }
+
+  .dish-content h2 {
+    font-size: 30px;
+  }
+
+  .dish-arabic {
+    font-size: 25px;
+  }
+
+  .dish-content p {
+    font-size: 15px;
+  }
+
+  .catering-cta {
+    padding: 70px 7%;
+  }
+
+  .catering-cta::before,
+  .catering-cta::after {
+    font-size: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dish-card,
+  .dish-image img,
+  .back-link,
+  .cta-button {
+    transition: none;
   }
 }
 </style>
