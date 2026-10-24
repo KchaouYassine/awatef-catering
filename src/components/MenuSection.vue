@@ -8,12 +8,6 @@
 
         <h2>Unsere Speisekarte</h2>
         <div class="gold-line"></div>
-
-        <p>
-          Entdecken Sie unsere vielfältige Auswahl
-          an traditionellen syrischen Gerichten –
-          frisch zubereitet und mit viel Liebe zum Detail.
-        </p>
       </header>
 
       <p v-if="loading" class="menu-message">
