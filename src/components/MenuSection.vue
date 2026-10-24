@@ -2,12 +2,24 @@
   <section id="menu" class="menu-section">
     <div class="menu-container">
       <header class="menu-header">
+        <div class="header-ornament" aria-hidden="true">
+          <span></span>
+          <svg viewBox="0 0 64 64" fill="none">
+            <path d="M32 3 41 23 61 32 41 41 32 61 23 41 3 32 23 23Z"/>
+            <path d="M32 14 38 26 50 32 38 38 32 50 26 38 14 32 26 26Z"/>
+            <path d="M32 23V41M23 32H41"/>
+          </svg>
+          <span></span>
+        </div>
+
         <span lang="ar" dir="rtl" class="arabic">
           قائمة الطعام
         </span>
 
         <h2>Unsere Speisekarte</h2>
+
         <div class="gold-line"></div>
+
       </header>
 
       <p v-if="loading" class="menu-message">
@@ -18,14 +30,9 @@
         {{ error }}
       </p>
 
-      <p
-        v-else-if="!categories.length"
-        class="menu-message"
-      >
+      <p v-else-if="!categories.length" class="menu-message">
         Unsere Speisekarte folgt in Kürze.
       </p>
-
-
       <div v-else class="category-grid">
         <RouterLink
           v-for="category in categories"
@@ -117,55 +124,111 @@ function imageUrl(image) {
 
 <style scoped>
 .menu-section {
-  background:
-    radial-gradient(
-      ellipse at 50% 30%,
-      #0b594b,
-      #032f29 85%
-    );
-  padding: 95px 5% 110px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 100px 5% 120px;
   color: #fff8eb;
   scroll-margin-top: 80px;
+  background:
+    radial-gradient(ellipse at 50% 35%, #0b594b 0%, #032f29 85%);
+}
+
+/* Subtle ornamental atmosphere */
+.menu-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.12;
+  pointer-events: none;
+  background-image:
+    repeating-conic-gradient(
+      from 45deg,
+      transparent 0deg 42deg,
+      rgba(214, 180, 120, .35) 44deg 46deg,
+      transparent 48deg 90deg
+    );
+  background-size: 90px 90px;
+  mask-image: radial-gradient(
+    ellipse at center,
+    transparent 15%,
+    black 100%
+  );
 }
 
 .menu-container {
-  max-width: 1350px;
-  margin: auto;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
+/* Heading */
 .menu-header {
+  max-width: 750px;
+  margin: 0 auto 65px;
   text-align: center;
-  max-width: 650px;
-  margin: 0 auto 45px;
+}
+
+.header-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  color: #d6b478;
+}
+
+.header-ornament > span {
+  width: 75px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d6b478
+  );
+}
+
+.header-ornament > span:last-child {
+  transform: rotate(180deg);
+}
+
+.header-ornament svg {
+  width: 45px;
+  height: 45px;
+  stroke: currentColor;
+  stroke-width: 1.3;
 }
 
 .arabic {
   display: block;
   font-family: 'Amiri', serif;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  line-height: 1.4;
   color: #d6b478;
 }
 
 .menu-header h2 {
+  margin: 4px 0 18px;
   font-family: Georgia, serif;
+  font-size: clamp(2.7rem, 4.5vw, 4.8rem);
   font-weight: 400;
-  font-size: clamp(2.5rem, 4vw, 4rem);
-  margin: 5px 0 18px;
+  line-height: 1.15;
 }
 
 .gold-line {
-  width: 45px;
-  height: 2px;
-  background: #d6b478;
+  width: 90px;
+  height: 1px;
   margin: 0 auto 20px;
+  background: #d6b478;
 }
 
 .menu-header p {
+  margin: 0;
   font-family: Georgia, serif;
-  font-size: 17px;
+  font-size: clamp(15px, 1.5vw, 19px);
+  color: #e8d9c3;
   line-height: 1.6;
 }
-
 .category-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
