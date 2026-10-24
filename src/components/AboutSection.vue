@@ -112,7 +112,7 @@ onUnmounted(() => observer?.disconnect())
         <div class="portrait-fade"></div>
 
         <div class="signature" aria-hidden="true">
-          Awatef <Heart :size="28" :stroke-width="1.2" />
+          Hiba <Heart :size="28" :stroke-width="1.2" />
         </div>
 
         <div class="quote-card">
