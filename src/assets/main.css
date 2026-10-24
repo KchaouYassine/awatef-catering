@@ -1,0 +1,27 @@
+:root {
+  --awatef-green: #06483e;
+  --awatef-green-dark: #032f29;
+  --awatef-gold: #d6b478;
+  --awatef-cream: #f7f0e3;
+  --awatef-text: #173c35;
+}
+
+body {
+  margin: 0;
+  background-color: var(--awatef-cream);
+  color: var(--awatef-text);
+  font-family: 'Georgia', serif;
+}
+
+.btn-awatef {
+  background: var(--awatef-gold);
+  color: var(--awatef-green-dark);
+  border: none;
+  border-radius: 50px;
+  padding: 12px 28px;
+  transition: transform 0.3s ease;
+}
+
+.btn-awatef:hover {
+  transform: translateY(-3px);
+}
