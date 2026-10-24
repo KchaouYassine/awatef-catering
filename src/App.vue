@@ -1,20 +1,13 @@
 <template>
   <Navbar />
 
-  <main>
-    <HeroSection />
-    <AboutSection id="about"/>
-    <MenuSection id="menu" /> 
-    <section id="gallery"></section>
-    <section id="contact"></section>
-  </main>
+  <RouterView />
 </template>
 
 <script setup>
 import Navbar from './components/Navbar.vue'
-import HeroSection from './components/HeroSection.vue'
-import AboutSection from './components/AboutSection.vue'
-import MenuSection from './components/MenuSection.vue'
+import { RouterView } from 'vue-router'
+
 
 
 </script>

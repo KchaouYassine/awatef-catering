@@ -25,11 +25,15 @@
         Unsere Speisekarte folgt in Kürze.
       </p>
 
+
       <div v-else class="category-grid">
-        <a
+        <RouterLink
           v-for="category in categories"
           :key="category._id"
-          :href="`#category-${category.slug}`"
+          :to="{
+            name: 'category',
+            params: { slug: category.slug }
+          }"
           class="category-card"
         >
           <div class="card-image">
@@ -59,8 +63,9 @@
               <ArrowRight :size="21" />
             </span>
           </div>
-        </a>
+        </RouterLink>
       </div>
+
     </div>
   </section>
 </template>
