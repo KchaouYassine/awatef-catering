@@ -137,13 +137,13 @@ const contact = {
             lit. f DSGVO in Betracht.
           </p>
 
-          <p class="review-note">
+          <!-- <p class="review-note">
             Vor Veröffentlichung ergänzen:
             Name und Anschrift des Hostinganbieters,
             gegebenenfalls Empfänger und Drittlandtransfers
             sowie die tatsächliche Speicherdauer
             der Serverprotokolle.
-          </p>
+          </p> -->
         </article>
 
         <!-- 4 -->
@@ -228,15 +228,6 @@ const contact = {
               Datenschutzerklärung von Web3Forms
             </a>.
           </p>
-
-          <p class="review-note">
-            Vor Veröffentlichung prüfen:
-            Auftragsverarbeitungsvertrag,
-            eingesetzte Unterauftragsverarbeiter,
-            internationale Datenübermittlungen,
-            geeignete Garantien und tatsächliche
-            Speicherfristen.
-          </p>
         </article>
 
         <!-- 6 -->
@@ -288,12 +279,6 @@ const contact = {
             an den jeweiligen Dienst übermittelt werden.
           </p>
 
-          <p class="review-note">
-            Vor Veröffentlichung prüfen:
-            genaue Anbieterangaben, Serverstandorte,
-            Rechtsgrundlage, Auftragsverarbeitung
-            und eventuelle Drittlandübermittlungen.
-          </p>
         </article>
 
         <!-- 8 -->
@@ -315,16 +300,6 @@ const contact = {
             informieren wir hier über deren
             Funktionsweise und die damit verbundene
             Datenverarbeitung.
-          </p>
-
-          <p class="review-note">
-            Vor Veröffentlichung prüfen:
-            Cookies, lokale Speicherung,
-            Schriftarten (z. B. Amiri),
-            Analytics, Karten und andere
-            tatsächlich eingebundene Dienste.
-            Gegebenenfalls ist eine vorherige
-            Einwilligung erforderlich.
           </p>
         </article>
 
@@ -356,13 +331,6 @@ const contact = {
             gelten.
           </p>
 
-          <p class="review-note">
-            Vor Veröffentlichung ergänzen:
-            konkrete Löschfristen oder nachvollziehbare
-            Kriterien für Anfragen und E-Mails.
-            Speicherfristen externer Dienstleister
-            sind gesondert zu berücksichtigen.
-          </p>
         </article>
 
         <!-- 10 -->
@@ -700,21 +668,6 @@ const contact = {
   font-weight: 400;
 }
 
-/* ===================================
-   REVIEW NOTES
-=================================== */
-
-.privacy-block .review-note {
-  margin-top: 18px;
-  padding: 14px 17px;
-
-  background: #f0e4ce;
-  border-left: 3px solid #b78a4a;
-
-  color: #765b35;
-  font-size: 12px;
-  line-height: 1.8;
-}
 
 /* ===================================
    CONTACT FOOTER

@@ -313,7 +313,7 @@ async function submitInquiry() {
             </svg>
 
             <span class="form-arabic" lang="ar" dir="rtl">
-              طلب تموين
+              طلب خدمات تقديم الطعام
             </span>
 
             <h3>Catering-Anfrage</h3>

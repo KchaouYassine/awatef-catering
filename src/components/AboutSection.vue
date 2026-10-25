@@ -1,37 +1,3 @@
-
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { Heart, Leaf, UsersRound } from 'lucide-vue-next'
-
-const aboutRef = ref(null)
-const isVisible = ref(false)
-let observer = null
-
-const values = [
-  { icon: Heart, label: 'Mit Liebe', second: 'gekocht' },
-  { icon: Leaf, label: 'Frische', second: 'Zutaten' },
-  { icon: UsersRound, label: 'Für Ihre', second: 'besonderen Anlässe' }
-]
-
-onMounted(() => {
-  if (!aboutRef.value) return
-
-  observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        isVisible.value = true
-        observer?.disconnect()
-      }
-    },
-    { threshold: 0.12 }
-  )
-
-  observer.observe(aboutRef.value)
-})
-
-onUnmounted(() => observer?.disconnect())
-</script>
-
 <template>
   <section
     id="about"
@@ -112,7 +78,7 @@ onUnmounted(() => observer?.disconnect())
         <div class="portrait-fade"></div>
 
         <div class="signature" aria-hidden="true">
-          Hiba <Heart :size="28" :stroke-width="1.2" />
+          Heba <Heart :size="28" :stroke-width="1.2" />
         </div>
 
         <div class="quote-card">
@@ -124,6 +90,41 @@ onUnmounted(() => observer?.disconnect())
     </div>
   </section>
 </template>
+
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { Heart, Leaf, UsersRound } from 'lucide-vue-next'
+
+const aboutRef = ref(null)
+const isVisible = ref(false)
+let observer = null
+
+const values = [
+  { icon: Heart, label: 'Mit Liebe', second: 'gekocht' },
+  { icon: Leaf, label: 'Frische', second: 'Zutaten' },
+  { icon: UsersRound, label: 'Für Ihre', second: 'besonderen Anlässe' }
+]
+
+onMounted(() => {
+  if (!aboutRef.value) return
+
+  observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        isVisible.value = true
+        observer?.disconnect()
+      }
+    },
+    { threshold: 0.12 }
+  )
+
+  observer.observe(aboutRef.value)
+})
+
+onUnmounted(() => observer?.disconnect())
+</script>
+
 
 <style scoped>
 .about-section {

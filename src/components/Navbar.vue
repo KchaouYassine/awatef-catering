@@ -9,7 +9,7 @@ import {
   CNavItem,
   CNavLink,
 } from '@coreui/vue'
-import { Instagram, MessageCircle, Menu, X, CalendarDays } from 'lucide-vue-next'
+import { Instagram, MessageCircle, Menu, X, CalendarDays, Tiktok } from 'lucide-vue-next'
 
 const isScrolled = ref(false)
 const mobileMenuOpen = ref(false)
@@ -18,7 +18,6 @@ const links = [
   { label: 'Startseite', href: '#home' },
   { label: 'Über uns', href: '#about' },
   { label: 'Speisekarte', href: '#menu' },
-  { label: 'Galerie', href: '#gallery' },
   { label: 'Kontakt', href: '#contact' },
 ]
 
@@ -84,6 +83,15 @@ onUnmounted(() => {
         <!-- WhatsApp-Link ergänzen, sobald die Nummer vorliegt -->
         <a href="#contact" aria-label="Kontakt" class="social-link">
           <MessageCircle :size="20" />
+        </a>
+        <a
+          href="https://www.instagram.com/awatef_catering/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Tiktol"
+          class="social-link"
+        >
+          <Tiktok :size="20" />
         </a>
 
         <a href="#contact" class="catering-btn">
