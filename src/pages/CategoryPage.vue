@@ -158,7 +158,7 @@
       </section>
 
       <!-- Catering CTA -->
-      <section class="catering-cta">
+      <!-- <section class="catering-cta">
         <div class="cta-content">
           <span class="cta-arabic" lang="ar" dir="rtl">
             من مطبخ عواطف
@@ -182,7 +182,7 @@
             <ArrowUpRight :size="19" />
           </RouterLink>
         </div>
-      </section>
+      </section> -->
     </template>
   </main>
 </template>
