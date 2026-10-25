@@ -49,6 +49,7 @@ import { ArrowRight } from 'lucide-vue-next'
   </section>
 </template>
 
+
 <style scoped>
 .hero-section {
   position: relative;
@@ -58,17 +59,28 @@ import { ArrowRight } from 'lucide-vue-next'
   overflow: hidden;
   display: flex;
   align-items: center;
+
   background:
     radial-gradient(
       circle at 40% 65%,
-      rgba(20, 115, 98, 0.35),
+      color-mix(
+        in srgb,
+        var(--awatef-green-300) 35%,
+        transparent
+      ),
       transparent 55%
     ),
-    linear-gradient(135deg, #032f29, #075347);
-  color: #f7f0e3;
+    linear-gradient(
+      135deg,
+      var(--awatef-green-700),
+      var(--awatef-green-500)
+    );
+
+  color: var(--awatef-cream);
 }
 
 /* Left side */
+
 .hero-content {
   position: relative;
   z-index: 3;
@@ -102,7 +114,7 @@ import { ArrowRight } from 'lucide-vue-next'
 .gold-line {
   width: 48px;
   height: 2px;
-  background: #d6b478;
+  background: var(--awatef-gold);
   margin-bottom: 28px;
 }
 
@@ -112,8 +124,10 @@ import { ArrowRight } from 'lucide-vue-next'
   line-height: 1.6;
   max-width: 410px;
   margin-bottom: 36px;
-  color: #eee6d8;
+  color: var(--awatef-cream);
 }
+
+/* Hero Button */
 
 .hero-button {
   display: inline-flex;
@@ -122,22 +136,26 @@ import { ArrowRight } from 'lucide-vue-next'
   gap: 20px;
   padding: 16px 28px;
   border-radius: 50px;
-  background: #d6b478;
-  color: #032f29;
+
+  background: var(--awatef-gold);
+  color: var(--awatef-green-700);
+
   text-decoration: none;
   font-size: 15px;
+
   transition:
     background 0.3s ease,
     transform 0.3s ease;
 }
 
 .hero-button:hover {
-  background: #eac995;
-  color: #032f29;
+  background: var(--awatef-gold-light);
+  color: var(--awatef-green-700);
   transform: translateY(-3px);
 }
 
 /* Right image */
+
 .hero-image-container {
   position: absolute;
   top: 0;
@@ -155,13 +173,6 @@ import { ArrowRight } from 'lucide-vue-next'
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
   transform: scale(1.03);
 }
 
@@ -169,28 +180,39 @@ import { ArrowRight } from 'lucide-vue-next'
   content: '';
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     90deg,
-    rgba(3, 47, 41, 0.12),
+    color-mix(
+      in srgb,
+      var(--awatef-green-700) 12%,
+      transparent
+    ),
     transparent 35%
   );
+
   pointer-events: none;
 }
+
+/* Decorative Pattern */
 
 .hero-pattern {
   position: absolute;
   inset: 0;
   opacity: 0.045;
   pointer-events: none;
+
   background-image:
     repeating-linear-gradient(
       45deg,
-      #d6b478 0,
-      #d6b478 1px,
+      var(--awatef-gold) 0,
+      var(--awatef-gold) 1px,
       transparent 1px,
       transparent 40px
     );
 }
+
+/* Glow */
 
 .hero-glow {
   position: absolute;
@@ -198,18 +220,26 @@ import { ArrowRight } from 'lucide-vue-next'
   height: 400px;
   left: 30%;
   bottom: -250px;
-  background: rgba(17, 118, 99, 0.3);
+
+  background: color-mix(
+    in srgb,
+    var(--awatef-green-300) 30%,
+    transparent
+  );
+
   filter: blur(80px);
   border-radius: 50%;
   pointer-events: none;
 }
 
 /* Animations */
+
 @keyframes slideFromLeft {
   from {
     opacity: 0;
     transform: translateX(-55px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -221,6 +251,7 @@ import { ArrowRight } from 'lucide-vue-next'
     opacity: 0;
     transform: translateX(80px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -230,6 +261,7 @@ import { ArrowRight } from 'lucide-vue-next'
 /* ===================================
    TABLET HERO
 =================================== */
+
 @media (min-width: 768px) and (max-width: 1199px) {
   .hero-section {
     min-height: 720px;
@@ -239,14 +271,12 @@ import { ArrowRight } from 'lucide-vue-next'
     display: flex;
     flex-direction: row;
     align-items: stretch;
-
     overflow: hidden;
   }
 
   .hero-content {
     width: 55%;
     min-width: 0;
-
     padding: 90px 5% 60px 6%;
 
     display: flex;
@@ -265,11 +295,9 @@ import { ArrowRight } from 'lucide-vue-next'
 
   .hero-logo {
     display: none;
-
     width: 210px;
     max-width: 100%;
     height: auto;
-
     margin-bottom: 22px;
   }
 
@@ -286,13 +314,11 @@ import { ArrowRight } from 'lucide-vue-next'
 
   .hero-image-container {
     display: block;
-
     width: 45%;
     height: 100%;
 
     position: relative;
     flex-shrink: 0;
-
     clip-path: none;
     overflow: hidden;
   }
@@ -313,6 +339,7 @@ import { ArrowRight } from 'lucide-vue-next'
 /* ===================================
    MOBILE HERO
 =================================== */
+
 @media (max-width: 767px) {
   .hero-section {
     min-height: 100svh;
@@ -368,11 +395,12 @@ import { ArrowRight } from 'lucide-vue-next'
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     padding: 15px 22px;
     font-size: 14px;
   }
 }
+
+/* Reduced Motion */
 
 @media (prefers-reduced-motion: reduce) {
   .hero-text,
@@ -383,5 +411,29 @@ import { ArrowRight } from 'lucide-vue-next'
   .hero-button {
     transition: none;
   }
+}
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 42%,
+    black 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 42%,
+    black 100%
+  );
 }
 </style>

@@ -126,12 +126,13 @@ onUnmounted(() => observer?.disconnect())
 </script>
 
 
+
 <style scoped>
 .about-section {
   position: relative;
   overflow: hidden;
-  background: #f7f0e3;
-  color: #173c35;
+  background: var(--awatef-cream);
+  color: var(--color-primary);
   scroll-margin-top: 80px;
 }
 
@@ -144,6 +145,8 @@ onUnmounted(() => observer?.disconnect())
   min-height: 650px;
 }
 
+/* About Content */
+
 .about-copy {
   position: relative;
   z-index: 3;
@@ -153,7 +156,7 @@ onUnmounted(() => observer?.disconnect())
 .arabic-title {
   display: block;
   width: fit-content;
-  color: #a47d46;
+  color: var(--awatef-green-500);
   font-family: 'Amiri', serif;
   font-size: 2.7rem;
   line-height: 1.3;
@@ -163,14 +166,14 @@ onUnmounted(() => observer?.disconnect())
   font-family: Georgia, serif;
   font-size: clamp(3rem, 4vw, 4.5rem);
   font-weight: 400;
-  color: #06483e;
+  color: var(--color-primary);
   margin: 0 0 18px;
 }
 
 .gold-rule {
   width: 58px;
   height: 2px;
-  background: #c7a46a;
+  background: var(--awatef-gold);
   margin-bottom: 28px;
 }
 
@@ -182,12 +185,12 @@ onUnmounted(() => observer?.disconnect())
   font-family: Georgia, serif;
   font-size: clamp(15px, 1.15vw, 18px);
   line-height: 1.7;
-  color: #51463c;
+  color: var(--color-primary);
   margin-bottom: 15px;
 }
 
 .about-story strong {
-  color: #06483e;
+  color: var(--awatef-green-700);
 }
 
 /* Values */
@@ -215,13 +218,15 @@ onUnmounted(() => observer?.disconnect())
   justify-content: center;
   width: 58px;
   height: 58px;
-  border: 1px solid #ae854d;
+
+  border: 1px solid var(--awatef-green-500);
   border-radius: 50%;
-  color: #ae854d;
+  color: var(--awatef-green-500);
+
   margin-bottom: 12px;
 }
 
-/* Portrait area */
+/* Portrait Area */
 
 .about-art {
   position: relative;
@@ -232,13 +237,14 @@ onUnmounted(() => observer?.disconnect())
 .portrait-background {
   position: absolute;
   inset: 0;
+
   background:
     radial-gradient(
       circle at 80% 30%,
-      #e3d0b2,
+      var(--awatef-cream-dark),
       transparent 55%
     ),
-    #f0e4d1;
+    var(--awatef-cream);
 }
 
 .about-portrait {
@@ -258,17 +264,30 @@ onUnmounted(() => observer?.disconnect())
   inset: 0;
   z-index: 2;
   pointer-events: none;
+
   background:
     linear-gradient(
       90deg,
-      #f7f0e3 0%,
-      rgba(247,240,227,.95) 5%,
-      rgba(247,240,227,.4) 23%,
+      var(--awatef-cream) 0%,
+      color-mix(
+        in srgb,
+        var(--awatef-cream) 95%,
+        transparent
+      ) 5%,
+      color-mix(
+        in srgb,
+        var(--awatef-cream) 40%,
+        transparent
+      ) 23%,
       transparent 48%
     ),
     linear-gradient(
       0deg,
-      rgba(247,240,227,.5),
+      color-mix(
+        in srgb,
+        var(--awatef-cream) 50%,
+        transparent
+      ),
       transparent 30%
     );
 }
@@ -283,17 +302,18 @@ onUnmounted(() => observer?.disconnect())
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #06483e;
+
+  color: var(--color-primary);
   font-family: 'Brush Script MT', cursive;
   font-size: 2.5rem;
   transform: rotate(-7deg);
 }
 
 .signature svg {
-  color: #b58b50;
+  color: var(--awatef-green-500);
 }
 
-/* Quote */
+/* Quote Card */
 
 .quote-card {
   position: absolute;
@@ -302,40 +322,44 @@ onUnmounted(() => observer?.disconnect())
   bottom: 45px;
   width: min(270px, 55%);
   padding: 25px;
-  background: #06483e;
-  color: #f7f0e3;
+
+  background: var(--color-primary);
+  color: var(--awatef-cream);
+
   border-radius: 28px 4px 28px 28px;
-  box-shadow: 0 15px 40px rgba(0,0,0,.18);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
 }
 
 .quote-symbol {
   display: block;
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-family: Georgia, serif;
   font-size: 60px;
-  line-height: .5;
+  line-height: 0.5;
 }
 
 .quote-card p {
   font-family: Georgia, serif;
   font-size: 17px;
   line-height: 1.45;
-  margin: 12px 0 12px;
+  margin: 12px 0;
 }
 
 .quote-card > span:last-child {
   display: block;
   text-align: right;
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-size: 13px;
 }
 
-/* Scroll animations */
+/* Scroll Animations */
 
 .about-copy,
 .about-art {
   opacity: 0;
-  transition: opacity .9s ease, transform .9s ease;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
 }
 
 .about-copy {
@@ -352,8 +376,9 @@ onUnmounted(() => observer?.disconnect())
   transform: translateX(0);
 }
 
-/* Tablet */
-
+/* ===================================
+   TABLET
+=================================== */
 
 @media (max-width: 1100px) {
   .about-inner {
@@ -378,7 +403,9 @@ onUnmounted(() => observer?.disconnect())
   }
 }
 
-/* Mobile */
+/* ===================================
+   MOBILE
+=================================== */
 
 @media (max-width: 767px) {
   .about-inner {
@@ -426,14 +453,17 @@ onUnmounted(() => observer?.disconnect())
   }
 
   .portrait-fade {
-    background:
-      linear-gradient(
-        180deg,
-        #f7f0e3 0%,
-        transparent 24%,
-        transparent 75%,
-        rgba(247,240,227,.2) 100%
-      );
+    background: linear-gradient(
+      180deg,
+      var(--awatef-cream) 0%,
+      transparent 24%,
+      transparent 75%,
+      color-mix(
+        in srgb,
+        var(--awatef-cream) 20%,
+        transparent
+      ) 100%
+    );
   }
 
   .quote-card {
@@ -453,6 +483,8 @@ onUnmounted(() => observer?.disconnect())
     font-size: 1.7rem;
   }
 }
+
+/* Reduced Motion */
 
 @media (prefers-reduced-motion: reduce) {
   .about-copy,

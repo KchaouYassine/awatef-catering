@@ -127,6 +127,7 @@ const paused = ref(false)
   </section>
 </template>
 
+
 <style scoped>
 /* =====================================
    OCCASION RIBBON
@@ -140,9 +141,13 @@ const paused = ref(false)
 
   background: radial-gradient(
     ellipse at center,
-    #fff9ee 0%,
-    #f7f0e3 75%,
-    #efe0c8 100%
+    var(--awatef-cream) 0%,
+    var(--awatef-cream-dark) 75%,
+    color-mix(
+      in srgb,
+      var(--awatef-cream-dark) 85%,
+      var(--awatef-gold) 15%
+    ) 100%
   );
 }
 
@@ -155,7 +160,7 @@ const paused = ref(false)
   align-items: center;
   gap: 12px;
   padding: 0 30px;
-  color: #b78a4a;
+  color: var(--awatef-gold-dark);
 }
 
 .border-line {
@@ -165,8 +170,8 @@ const paused = ref(false)
   background: linear-gradient(
     90deg,
     transparent,
-    #c7a46a 12%,
-    #c7a46a 88%,
+    var(--awatef-gold-dark) 12%,
+    var(--awatef-gold-dark) 88%,
     transparent
   );
 }
@@ -185,7 +190,7 @@ const paused = ref(false)
   stroke-width: 1.5;
   stroke-linejoin: round;
 
-  color: #b78a4a;
+  color: var(--awatef-gold-dark);
 }
 
 .border-ornament {
@@ -233,7 +238,6 @@ const paused = ref(false)
   gap: 38px;
   padding-right: 80px;
   padding-left: 80px;
-
 }
 
 .occasion-text {
@@ -241,7 +245,6 @@ const paused = ref(false)
   flex-direction: column;
   align-items: center;
   gap: 4px;
-
   white-space: nowrap;
 }
 
@@ -255,7 +258,7 @@ const paused = ref(false)
   font-weight: 400;
   line-height: 1.15;
 
-  color: #073d34;
+  color: var(--awatef-green-700);
 }
 
 .occasion-ar {
@@ -263,7 +266,7 @@ const paused = ref(false)
   font-size: clamp(18px, 2vw, 23px);
   line-height: 1.5;
 
-  color: #a5783f;
+  color: var(--awatef-gold-dark);
 }
 
 /* =====================================
@@ -312,6 +315,7 @@ const paused = ref(false)
   .occasion-item {
     gap: 22px;
     padding-right: 15px;
+    padding-left: 15px;
   }
 
   .occasion-de {

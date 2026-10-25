@@ -289,11 +289,16 @@ function imageUrl(image) {
 }
 </script>
 
+
 <style scoped>
+/* ===================================
+   CATEGORY PAGE
+=================================== */
+
 .category-page {
   min-height: 100vh;
-  background: #f7f0e3;
-  color: #06483e;
+  background: var(--awatef-cream);
+  color: var(--awatef-green-700);
 }
 
 .page-status {
@@ -309,10 +314,12 @@ function imageUrl(image) {
 }
 
 .status-link {
-  color: #a47d46;
+  color: var(--awatef-gold-dark);
 }
 
-/* HERO */
+/* ===================================
+   HERO
+=================================== */
 
 .category-hero {
   position: relative;
@@ -320,14 +327,15 @@ function imageUrl(image) {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 65px4px 65px;
-  background:
-    radial-gradient(
-      ellipse at 50% 40%,
-      #0a5649,
-      #032f29 85%
-    );
-  color: #f7f0e3;
+  padding: 110px 24px 65px;
+
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    var(--awatef-green-500),
+    var(--awatef-green-700) 85%
+  );
+
+  color: var(--awatef-cream);
   overflow: hidden;
   text-align: center;
 }
@@ -335,22 +343,24 @@ function imageUrl(image) {
 .hero-pattern {
   position: absolute;
   inset: 0;
-  opacity: .11;
+  opacity: 0.11;
+
   background-image:
     repeating-linear-gradient(
       45deg,
       transparent 0,
       transparent 42px,
-      #d6b478 43px,
+      var(--awatef-gold) 43px,
       transparent 44px
     ),
     repeating-linear-gradient(
       -45deg,
       transparent 0,
       transparent 42px,
-      #d6b478 43px,
+      var(--awatef-gold) 43px,
       transparent 44px
     );
+
   pointer-events: none;
 }
 
@@ -365,12 +375,12 @@ function imageUrl(image) {
   width: 190px;
   height: 65px;
   margin: 0 auto 12px;
-  color: #d6b478;
+  color: var(--awatef-gold);
 }
 
 .hero-arabic {
   display: block;
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-family: 'Amiri', serif;
   font-size: clamp(2rem, 3vw, 2.8rem);
   line-height: 1.5;
@@ -389,7 +399,6 @@ function imageUrl(image) {
   align-items: center;
   justify-content: center;
   gap: 15px;
-
   width: 220px;
   margin: 28px auto;
 }
@@ -397,7 +406,12 @@ function imageUrl(image) {
 .hero-divider span {
   flex: 1;
   height: 1px;
-  background: rgba(214, 180, 120, 0.65);
+
+  background: color-mix(
+    in srgb,
+    var(--awatef-gold) 65%,
+    transparent
+  );
 }
 
 .hero-divider svg {
@@ -405,7 +419,7 @@ function imageUrl(image) {
   height: 28px;
   flex-shrink: 0;
 
-  stroke: #d6b478;
+  stroke: var(--awatef-gold);
   stroke-width: 1.5;
   stroke-linejoin: round;
 }
@@ -418,12 +432,14 @@ function imageUrl(image) {
   line-height: 1.7;
 }
 
-/* DISHES SECTION */
+/* ===================================
+   DISHES SECTION
+=================================== */
 
 .dishes-section {
   position: relative;
   padding: 55px 6% 110px;
-  background: #f7f0e3;
+  background: var(--awatef-cream);
 }
 
 .dishes-container {
@@ -436,14 +452,17 @@ function imageUrl(image) {
   align-items: center;
   gap: 10px;
   margin-bottom: 38px;
-  color: #8c6a3e;
+
+  color: var(--awatef-gold-dark);
   text-decoration: none;
   font-size: 14px;
-  transition: gap .25s ease;
+
+  transition: gap 0.25s ease;
 }
 
 .back-link:hover {
   gap: 15px;
+  color: var(--awatef-green-700);
 }
 
 .dishes-list {
@@ -452,35 +471,53 @@ function imageUrl(image) {
   gap: 25px;
 }
 
-/* ALTERNATING CARDS */
+/* ===================================
+   ALTERNATING CARDS
+=================================== */
 
 .dish-card {
   position: relative;
   display: grid;
   grid-template-columns: 49% 51%;
   min-height: 295px;
-  background: #fff9ef;
-  border: 1px solid #c7a46a;
+
+  background: var(--awatef-cream-dark);
+  border: 1px solid var(--awatef-gold);
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 10px 35px rgba(60, 40, 20, .06);
+
+  box-shadow: 0 10px 35px
+    color-mix(
+      in srgb,
+      var(--awatef-green-700) 6%,
+      transparent
+    );
+
   transition:
-    transform .3s ease,
-    box-shadow .3s ease;
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .dish-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(60, 40, 20, .12);
+
+  box-shadow: 0 18px 40px
+    color-mix(
+      in srgb,
+      var(--awatef-green-700) 15%,
+      transparent
+    );
 }
 
 .dish-card.reversed .dish-image {
   order: 2;
 }
 
+/* Dish Image */
+
 .dish-image {
   min-height: 295px;
-  background: #e4d3b8;
+  background: var(--awatef-cream-dark);
   overflow: hidden;
 }
 
@@ -489,12 +526,14 @@ function imageUrl(image) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .6s ease;
+  transition: transform 0.6s ease;
 }
 
 .dish-card:hover .dish-image img {
   transform: scale(1.045);
 }
+
+/* Dish Content */
 
 .dish-content {
   position: relative;
@@ -502,25 +541,15 @@ function imageUrl(image) {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+
   padding: 35px clamp(25px, 4vw, 65px);
   overflow: hidden;
 }
 
-.dish-content::after {
-  content: '❀';
-  position: absolute;
-  right: -25px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 180px;
-  line-height: 1;
-  color: rgba(199, 164, 106, .12);
-  pointer-events: none;
-}
+/* Keine Blumen oder floralen Wasserzeichen */
 
-.reversed .dish-content::after {
-  right: auto;
-  left: -25px;
+.dish-content::after {
+  content: none;
 }
 
 .content-decoration {
@@ -528,7 +557,7 @@ function imageUrl(image) {
   align-items: center;
   gap: 12px;
   margin-bottom: 10px;
-  color: #b58b50;
+  color: var(--awatef-gold-dark);
 }
 
 .little-leaf {
@@ -539,14 +568,15 @@ function imageUrl(image) {
 .decoration-line {
   width: 110px;
   height: 1px;
-  background: #c7a46a;
+  background: var(--awatef-gold-dark);
 }
 
 .dish-arabic {
   position: relative;
   z-index: 1;
   display: block;
-  color: #b58b50;
+
+  color: var(--awatef-gold-dark);
   font-family: 'Amiri', serif;
   font-size: 28px;
   line-height: 1.5;
@@ -556,12 +586,15 @@ function imageUrl(image) {
   position: relative;
   z-index: 1;
   margin: 0;
-  color: #06483e;
+
+  color: var(--awatef-green-700);
   font-family: Georgia, serif;
   font-size: clamp(28px, 3vw, 40px);
   font-weight: 400;
   line-height: 1.2;
 }
+
+/* Geometric Dish Divider */
 
 .dish-divider {
   display: flex;
@@ -576,7 +609,12 @@ function imageUrl(image) {
 .dish-divider span {
   flex: 1;
   height: 1px;
-  background: rgba(183, 138, 74, 0.5);
+
+  background: color-mix(
+    in srgb,
+    var(--awatef-gold-dark) 50%,
+    transparent
+  );
 }
 
 .dish-divider svg {
@@ -584,7 +622,7 @@ function imageUrl(image) {
   height: 22px;
   flex-shrink: 0;
 
-  stroke: #b78a4a;
+  stroke: var(--awatef-gold-dark);
   stroke-width: 1.5;
   stroke-linejoin: round;
 }
@@ -594,7 +632,8 @@ function imageUrl(image) {
   z-index: 1;
   max-width: 440px;
   margin: 0;
-  color: #5b5147;
+
+  color: var(--awatef-green-700);
   font-family: Georgia, serif;
   font-size: 16px;
   line-height: 1.7;
@@ -602,7 +641,7 @@ function imageUrl(image) {
 
 .dish-price {
   margin-top: 18px;
-  color: #a47d46;
+  color: var(--awatef-gold-dark);
   font-family: Georgia, serif;
   font-size: 18px;
 }
@@ -611,43 +650,33 @@ function imageUrl(image) {
   padding: 70px 20px;
   text-align: center;
   font-family: Georgia, serif;
-  color: #5b5147;
+  color: var(--awatef-green-700);
 }
 
-/* CATERING CTA */
+/* ===================================
+   CATERING CTA
+=================================== */
 
 .catering-cta {
   position: relative;
   padding: 90px 6% 100px;
-  background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      #0c5b4e,
-      #032f29 85%
-    );
-  color: #fff8eb;
+
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    var(--awatef-green-500),
+    var(--awatef-green-700) 85%
+  );
+
+  color: var(--awatef-cream);
   text-align: center;
   overflow: hidden;
 }
 
+/* Keine floralen Ornamente */
+
 .catering-cta::before,
 .catering-cta::after {
-  content: '❀';
-  position: absolute;
-  font-size: 280px;
-  line-height: 1;
-  color: rgba(214, 180, 120, .12);
-  pointer-events: none;
-}
-
-.catering-cta::before {
-  left: -80px;
-  bottom: -100px;
-}
-
-.catering-cta::after {
-  right: -80px;
-  top: -100px;
+  content: none;
 }
 
 .cta-content {
@@ -661,7 +690,7 @@ function imageUrl(image) {
   display: block;
   font-family: 'Amiri', serif;
   font-size: 28px;
-  color: #d6b478;
+  color: var(--awatef-gold);
 }
 
 .catering-cta h2 {
@@ -684,22 +713,27 @@ function imageUrl(image) {
   align-items: center;
   gap: 12px;
   padding: 15px 28px;
+
   border-radius: 30px;
-  background: #d6b478;
-  color: #063b32;
+  background: var(--awatef-gold);
+  color: var(--awatef-green-700);
+
   font-weight: 600;
   text-decoration: none;
+
   transition:
-    transform .2s ease,
-    background .2s ease;
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
-  background: #edce92;
+  background: var(--awatef-gold-light);
 }
 
-/* TABLET */
+/* ===================================
+   TABLET
+=================================== */
 
 @media (max-width: 900px) {
   .dish-card {
@@ -720,7 +754,9 @@ function imageUrl(image) {
   }
 }
 
-/* MOBILE */
+/* ===================================
+   MOBILE
+=================================== */
 
 @media (max-width: 650px) {
   .category-hero {
@@ -780,12 +816,11 @@ function imageUrl(image) {
   .catering-cta {
     padding: 70px 7%;
   }
-
-  .catering-cta::before,
-  .catering-cta::after {
-    font-size: 170px;
-  }
 }
+
+/* ===================================
+   REDUCED MOTION
+=================================== */
 
 @media (prefers-reduced-motion: reduce) {
   .dish-card,

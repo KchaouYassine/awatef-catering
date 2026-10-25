@@ -144,6 +144,7 @@ onUnmounted(() => {
 })
 </script>
 
+
 <style scoped>
 .awatef-navbar {
   position: absolute;
@@ -152,18 +153,32 @@ onUnmounted(() => {
   width: 100%;
   z-index: 1000;
   padding: 16px 0;
-  background: rgba(3, 47, 41, 0.92);
+
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 94%,
+    transparent
+  );
+
+  transition: background 0.3s ease, padding 0.3s ease;
 }
 
 .navbar-scrolled,
 .mobile-open {
-  background: rgba(3, 47, 41, 0.97);
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 98%,
+    transparent
+  );
+
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
 }
 
 .navbar-scrolled {
   padding: 10px 0;
 }
+
+/* Container */
 
 .nav-container {
   max-width: 1400px;
@@ -175,12 +190,16 @@ onUnmounted(() => {
   gap: 20px;
 }
 
+/* Logo */
+
 .brand-logo {
   width: 145px;
   height: auto;
   max-height: 70px;
   object-fit: contain;
 }
+
+/* Desktop Navigation */
 
 .desktop-links {
   display: flex;
@@ -190,15 +209,17 @@ onUnmounted(() => {
 }
 
 .desktop-links .nav-link {
-  color: #f7f0e3;
+  color: var(--awatef-cream);
   font-family: Georgia, serif;
   font-size: 15px;
   transition: color 0.3s ease;
 }
 
 .desktop-links .nav-link:hover {
-  color: #d6b478;
+  color: var(--awatef-gold);
 }
+
+/* Social Links */
 
 .nav-actions {
   display: flex;
@@ -207,48 +228,62 @@ onUnmounted(() => {
 }
 
 .social-link {
-  color: #f7f0e3;
+  color: var(--awatef-cream);
   display: flex;
   align-items: center;
-  transition: color 0.3s ease, transform 0.3s ease;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .social-link:hover {
-  color: #d6b478;
+  color: var(--awatef-gold);
   transform: translateY(-2px);
 }
+
+/* Catering Button */
 
 .catering-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #d6b478;
-  color: #032f29;
+
+  background: var(--awatef-gold);
+  color: var(--color-primary);
+
   padding: 12px 22px;
   border-radius: 50px;
   font-size: 14px;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.3s ease, transform 0.3s ease;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
 }
 
 .catering-btn:hover {
-  background: #ebc994;
-  color: #032f29;
+  background: var(--awatef-gold-light);
+  color: var(--color-primary);
   transform: translateY(-2px);
 }
+
+/* Mobile Toggle */
 
 .mobile-toggle {
   display: none;
   border: none;
   background: transparent;
-  color: #f7f0e3;
+  color: var(--awatef-cream);
   cursor: pointer;
 }
 
 .mobile-menu {
   display: none;
 }
+
+/* Smaller Desktop */
 
 @media (max-width: 1100px) {
   .desktop-links {
@@ -260,9 +295,11 @@ onUnmounted(() => {
   }
 }
 
+/* Tablet & Mobile */
+
 @media (max-width: 991px) {
   .awatef-navbar {
-    background: #032f29;
+    background: var(--color-primary);
   }
 
   .desktop-links,
@@ -283,26 +320,37 @@ onUnmounted(() => {
     width: 100%;
     gap: 6px;
     padding: 24px 0 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-top: 1px solid color-mix(
+      in srgb,
+      var(--awatef-cream) 22%,
+      transparent
+    );
   }
 
   .mobile-menu a {
-    color: #f7f0e3;
+    color: var(--awatef-cream);
     text-decoration: none;
     padding: 12px 8px;
     font-size: 17px;
+    transition: color 0.3s ease;
   }
 
   .mobile-menu a:hover {
-    color: #d6b478;
+    color: var(--awatef-gold);
   }
 
   .mobile-menu .mobile-cta {
-    background: #d6b478;
-    color: #032f29;
+    background: var(--awatef-gold);
+    color: var(--color-primary);
     text-align: center;
     border-radius: 30px;
     margin-top: 12px;
+  }
+
+  .mobile-menu .mobile-cta:hover {
+    background: var(--awatef-gold-light);
+    color: var(--color-primary);
   }
 
   .brand-logo {
@@ -310,10 +358,14 @@ onUnmounted(() => {
   }
 }
 
+/* Reduced Motion */
+
 @media (prefers-reduced-motion: reduce) {
   .awatef-navbar,
+  .desktop-links .nav-link,
   .social-link,
-  .catering-btn {
+  .catering-btn,
+  .mobile-menu a {
     transition: none;
   }
 }

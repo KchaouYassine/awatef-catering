@@ -534,6 +534,7 @@ async function submitInquiry() {
   </section>
 </template>
 
+
 <style scoped>
 /* =====================================
    MAIN SECTION
@@ -546,9 +547,9 @@ async function submitInquiry() {
 
   background: linear-gradient(
     135deg,
-    #032e28 0%,
-    #06483e 48%,
-    #032e28 100%
+    var(--awatef-green-700) 0%,
+    var(--awatef-green-500) 48%,
+    var(--awatef-green-700) 100%
   );
 
   padding: 110px 24px 120px;
@@ -564,12 +565,12 @@ async function submitInquiry() {
   background:
     radial-gradient(
       ellipse at 12% 35%,
-      rgba(214, 180, 120, 0.08),
+      color-mix(in srgb, var(--awatef-gold) 12%, transparent),
       transparent 48%
     ),
     radial-gradient(
       ellipse at 85% 85%,
-      rgba(214, 180, 120, 0.06),
+      color-mix(in srgb, var(--awatef-gold) 8%, transparent),
       transparent 40%
     );
 }
@@ -577,15 +578,12 @@ async function submitInquiry() {
 .catering-container {
   position: relative;
   z-index: 1;
-
   max-width: 1240px;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns:
     minmax(0, 0.92fr)
     minmax(0, 1.08fr);
-
   align-items: center;
   gap: clamp(50px, 6vw, 110px);
 }
@@ -595,17 +593,16 @@ async function submitInquiry() {
 ===================================== */
 
 .catering-intro {
-  color: #fff8ed;
+  color: var(--awatef-cream);
 }
 
 .intro-eyebrow {
   display: flex;
   align-items: center;
   gap: 15px;
-
   margin-bottom: 22px;
 
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-family: 'Amiri', Georgia, serif;
   font-size: 24px;
 }
@@ -613,12 +610,11 @@ async function submitInquiry() {
 .eyebrow-line {
   width: 42px;
   height: 1px;
-  background: #c7a46a;
+  background: var(--awatef-gold);
 }
 
 .catering-intro h2 {
   margin: 0;
-
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(38px, 4vw, 62px);
   font-weight: 400;
@@ -627,7 +623,7 @@ async function submitInquiry() {
 }
 
 .catering-intro h2 em {
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-style: italic;
   font-weight: 400;
 }
@@ -647,14 +643,17 @@ async function submitInquiry() {
 .header-ornament span {
   flex: 1;
   height: 1px;
-  background: rgba(214, 180, 120, 0.7);
+  background: color-mix(
+    in srgb,
+    var(--awatef-gold) 70%,
+    transparent
+  );
 }
 
 .header-ornament svg {
   width: 26px;
   height: 26px;
-
-  stroke: #d6b478;
+  stroke: var(--awatef-gold);
   stroke-width: 1.5;
   stroke-linejoin: round;
 }
@@ -662,8 +661,7 @@ async function submitInquiry() {
 .intro-description {
   max-width: 480px;
   margin: 0;
-
-  color: #e1d9c9;
+  color: var(--awatef-cream);
   font-size: 15px;
   line-height: 2;
   white-space: pre-line;
@@ -677,7 +675,6 @@ async function submitInquiry() {
   display: flex;
   flex-direction: column;
   gap: 23px;
-
   margin-top: 38px;
 }
 
@@ -696,26 +693,28 @@ async function submitInquiry() {
   width: 48px;
   height: 48px;
 
-  border: 1px solid rgba(214, 180, 120, 0.45);
-  border-radius: 50%;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--awatef-gold) 45%,
+    transparent
+  );
 
-  color: #d6b478;
+  border-radius: 50%;
+  color: var(--awatef-gold);
 }
 
 .feature h3 {
   margin: 0 0 4px;
-
   font-family: Georgia, serif;
   font-size: 17px;
   font-weight: 400;
-
-  color: #fff8ed;
+  color: var(--awatef-cream);
 }
 
 .feature p {
   margin: 0;
   font-size: 12px;
-  color: #c6c4b6;
+  color: var(--awatef-cream-dark);
 }
 
 /* =====================================
@@ -728,8 +727,7 @@ async function submitInquiry() {
 
 .contact-heading {
   margin: 0 0 18px;
-
-  color: #e9dcc6;
+  color: var(--awatef-cream);
   font-family: Georgia, serif;
   font-size: 18px;
 }
@@ -742,7 +740,6 @@ async function submitInquiry() {
 
 .contact-card {
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -751,11 +748,19 @@ async function submitInquiry() {
   min-height: 150px;
   padding: 22px 10px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: color-mix(
+    in srgb,
+    var(--awatef-cream) 4%,
+    transparent
+  );
 
-  border: 1px solid rgba(214, 180, 120, 0.38);
+  border: 1px solid color-mix(
+    in srgb,
+    var(--awatef-gold) 38%,
+    transparent
+  );
+
   border-radius: 5px;
-
   cursor: pointer;
   text-align: center;
 
@@ -771,21 +776,25 @@ async function submitInquiry() {
 .contact-card.revealed {
   transform: translateY(-5px);
 
-  background: rgba(214, 180, 120, 0.09);
-  border-color: #d6b478;
+  background: color-mix(
+    in srgb,
+    var(--awatef-gold) 12%,
+    transparent
+  );
+
+  border-color: var(--awatef-gold);
 
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
 }
 
 .contact-card:focus-visible {
-  outline: 2px solid #d6b478;
+  outline: 2px solid var(--awatef-gold);
   outline-offset: 4px;
 }
 
 .contact-card-icon {
   margin-bottom: 12px;
-  color: #d6b478;
-
+  color: var(--awatef-gold);
   transition: transform 0.3s ease;
 }
 
@@ -795,16 +804,14 @@ async function submitInquiry() {
 
 .contact-card-title {
   margin-bottom: 8px;
-
   font-family: Georgia, serif;
   font-size: 17px;
-
-  color: #fff8ed;
+  color: var(--awatef-cream);
 }
 
 .contact-card-hint {
   font-size: 12px;
-  color: #d6b478;
+  color: var(--awatef-gold);
 }
 
 .contact-card-value {
@@ -812,10 +819,9 @@ async function submitInquiry() {
   align-items: center;
   justify-content: center;
   gap: 4px;
-
   max-width: 100%;
 
-  color: #eacb92;
+  color: var(--awatef-gold-light);
   font-size: 12px;
   text-decoration: none;
   overflow-wrap: anywhere;
@@ -832,20 +838,23 @@ async function submitInquiry() {
 .form-outer {
   position: relative;
   min-width: 0;
-
   padding: 7px;
 
-  border: 1px solid rgba(214, 180, 120, 0.6);
+  border: 1px solid color-mix(
+    in srgb,
+    var(--awatef-gold) 60%,
+    transparent
+  );
+
   border-radius: 230px 230px 8px 8px;
 }
 
 .form-card {
   position: relative;
-
   padding: 78px clamp(24px, 4vw, 50px) 42px;
 
-  background: #fff8ed;
-  color: #06483e;
+  background: var(--awatef-cream);
+  color: var(--awatef-green-700);
 
   border-radius: 225px 225px 4px 4px;
 }
@@ -858,7 +867,6 @@ async function submitInquiry() {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   margin-bottom: 35px;
   text-align: center;
 }
@@ -866,10 +874,9 @@ async function submitInquiry() {
 .form-ornament {
   width: 36px;
   height: 36px;
-
   margin-bottom: 13px;
 
-  stroke: #b78a4a;
+  stroke: var(--awatef-gold-dark);
   stroke-width: 1.5;
   stroke-linejoin: round;
 }
@@ -877,12 +884,11 @@ async function submitInquiry() {
 .form-arabic {
   font-family: 'Amiri', Georgia, serif;
   font-size: 25px;
-  color: #a5783f;
+  color: var(--awatef-gold-dark);
 }
 
 .form-header h3 {
   margin: 6px 0 10px;
-
   font-family: Georgia, serif;
   font-size: clamp(28px, 3vw, 38px);
   font-weight: 400;
@@ -891,10 +897,9 @@ async function submitInquiry() {
 
 .form-header p {
   margin: 0;
-
   font-size: 13px;
   line-height: 1.7;
-  color: #827460;
+  color: var(--awatef-green-700);
 }
 
 /* =====================================
@@ -923,13 +928,13 @@ async function submitInquiry() {
 }
 
 .form-field label {
-  color: #244b40;
+  color: var(--awatef-green-700);
   font-size: 12px;
   font-weight: 600;
 }
 
 .form-field label span {
-  color: #b78a4a;
+  color: var(--awatef-gold-dark);
 }
 
 .form-field input,
@@ -937,18 +942,15 @@ async function submitInquiry() {
 .form-field textarea {
   width: 100%;
   min-width: 0;
-
   padding: 13px 14px;
 
-  background: #fffdf8;
-
-  border: 1px solid #e3d8c5;
+  background: var(--awatef-cream);
+  border: 1px solid var(--awatef-cream-dark);
   border-radius: 3px;
 
-  color: #073d34;
+  color: var(--awatef-green-700);
   font-family: inherit;
   font-size: 13px;
-
   outline: none;
 
   transition:
@@ -969,14 +971,23 @@ async function submitInquiry() {
 
 .form-field input::placeholder,
 .form-field textarea::placeholder {
-  color: #a49b8d;
+  color: color-mix(
+    in srgb,
+    var(--awatef-green-700) 50%,
+    var(--awatef-cream)
+  );
 }
 
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-  border-color: #b78a4a;
-  box-shadow: 0 0 0 3px rgba(214, 180, 120, 0.13);
+  border-color: var(--awatef-gold-dark);
+
+  box-shadow: 0 0 0 3px color-mix(
+    in srgb,
+    var(--awatef-gold) 20%,
+    transparent
+  );
 }
 
 .form-field select {
@@ -999,7 +1010,6 @@ async function submitInquiry() {
 
   width: 100%;
   min-height: 54px;
-
   margin-top: 27px;
   padding: 15px 20px;
 
@@ -1008,15 +1018,14 @@ async function submitInquiry() {
 
   background: linear-gradient(
     110deg,
-    #c7a46a,
-    #e3c58f,
-    #c7a46a
+    var(--awatef-gold-dark),
+    var(--awatef-gold),
+    var(--awatef-gold-dark)
   );
 
-  color: #073d34;
+  color: var(--awatef-green-700);
   font-family: Georgia, serif;
   font-size: 16px;
-
   cursor: pointer;
 
   transition:
@@ -1029,7 +1038,11 @@ async function submitInquiry() {
   transform: translateY(-2px);
   filter: brightness(1.04);
 
-  box-shadow: 0 10px 24px rgba(165, 120, 63, 0.18);
+  box-shadow: 0 10px 24px color-mix(
+    in srgb,
+    var(--awatef-gold-dark) 25%,
+    transparent
+  );
 }
 
 .submit-button:disabled {
@@ -1041,10 +1054,14 @@ async function submitInquiry() {
   width: 17px;
   height: 17px;
 
-  border: 2px solid rgba(7, 61, 52, 0.2);
-  border-top-color: #073d34;
-  border-radius: 50%;
+  border: 2px solid color-mix(
+    in srgb,
+    var(--awatef-green-700) 20%,
+    transparent
+  );
 
+  border-top-color: var(--awatef-green-700);
+  border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 
@@ -1062,10 +1079,9 @@ async function submitInquiry() {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-
   margin-top: 18px;
 
-  color: #756954;
+  color: var(--awatef-green-700);
   font-size: 11px;
   line-height: 1.8;
 }
@@ -1073,7 +1089,7 @@ async function submitInquiry() {
 .privacy-notice svg {
   flex-shrink: 0;
   margin-top: 3px;
-  color: #a5783f;
+  color: var(--awatef-gold-dark);
 }
 
 .privacy-notice p {
@@ -1081,13 +1097,13 @@ async function submitInquiry() {
 }
 
 .privacy-notice a {
-  color: #06483e;
+  color: var(--awatef-green-700);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .privacy-notice a:hover {
-  color: #b58b50;
+  color: var(--awatef-gold-dark);
 }
 
 /* =====================================
@@ -1098,10 +1114,8 @@ async function submitInquiry() {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-
   margin-bottom: 24px;
   padding: 16px;
-
   border-radius: 4px;
   font-size: 13px;
   line-height: 1.7;
@@ -1251,6 +1265,10 @@ async function submitInquiry() {
     grid-column: auto;
   }
 }
+
+/* =====================================
+   REDUCED MOTION
+===================================== */
 
 @media (prefers-reduced-motion: reduce) {
   .contact-card,

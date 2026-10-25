@@ -1,17 +1,3 @@
-
-<script setup>
-import { ArrowLeft, Mail, ShieldCheck } from 'lucide-vue-next'
-
-const contact = {
-  business: 'Awatef Catering',
-  responsible: 'Hebatullah Alakkab',
-  street: 'Mannheimer Straße198',
-  city: ' 67657 Kaiseralautern',
-  email: 'heba.akkab@gmail.com',
-  phone: '0172 9058837'
-}
-</script>
-
 <template>
   <main class="privacy-page">
     <!-- HERO -->
@@ -419,14 +405,29 @@ const contact = {
   </main>
 </template>
 
+
+<script setup>
+import { ArrowLeft, Mail, ShieldCheck } from 'lucide-vue-next'
+
+const contact = {
+  business: 'Awatef Catering',
+  responsible: 'Hebatullah Alakkab',
+  street: 'Mannheimer Straße198',
+  city: ' 67657 Kaiseralautern',
+  email: 'heba.akkab@gmail.com',
+  phone: '0172 9058837'
+}
+</script>
+
+
 <style scoped>
 /* ===================================
    PAGE
 =================================== */
 
 .privacy-page {
-  background: #f7f0e3;
-  color: #173f35;
+  background: var(--awatef-cream);
+  color: var(--awatef-green-700);
 }
 
 /* ===================================
@@ -437,19 +438,23 @@ const contact = {
   position: relative;
   overflow: hidden;
 
-  padding: 145px 24px 95px;
+  padding: 95px 24px;
 
   background:
     radial-gradient(
       ellipse at 50% 100%,
-      rgba(214, 180, 120, 0.11),
+      color-mix(
+        in srgb,
+        var(--awatef-gold) 11%,
+        transparent
+      ),
       transparent 60%
     ),
     linear-gradient(
       135deg,
-      #032f29,
-      #06483e,
-      #032f29
+      var(--awatef-green-700),
+      var(--awatef-green-500),
+      var(--awatef-green-700)
     );
 
   text-align: center;
@@ -462,10 +467,9 @@ const contact = {
 
 .hero-arabic {
   display: block;
-
   margin-bottom: 12px;
 
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-family: 'Amiri', Georgia, serif;
   font-size: 30px;
 }
@@ -473,7 +477,7 @@ const contact = {
 .privacy-hero h1 {
   margin: 0;
 
-  color: #fff8ed;
+  color: var(--awatef-cream);
   font-family: Georgia, serif;
   font-size: clamp(37px, 5vw, 65px);
   font-weight: 400;
@@ -483,7 +487,7 @@ const contact = {
 .privacy-hero p {
   margin: 0;
 
-  color: #e3d8c5;
+  color: var(--awatef-cream-dark);
   font-size: 15px;
   line-height: 1.8;
 }
@@ -505,7 +509,12 @@ const contact = {
 .ornament span {
   flex: 1;
   height: 1px;
-  background: rgba(214, 180, 120, 0.65);
+
+  background: color-mix(
+    in srgb,
+    var(--awatef-gold) 65%,
+    transparent
+  );
 }
 
 .ornament svg,
@@ -514,7 +523,7 @@ const contact = {
   height: 29px;
 
   fill: none;
-  stroke: #d6b478;
+  stroke: var(--awatef-gold);
   stroke-width: 1.5;
   stroke-linejoin: round;
 }
@@ -539,7 +548,7 @@ const contact = {
 
   margin-bottom: 45px;
 
-  color: #a5783f;
+  color: var(--awatef-gold-dark);
   font-size: 13px;
   text-decoration: none;
 
@@ -547,7 +556,7 @@ const contact = {
 }
 
 .back-link:hover {
-  color: #06483e;
+  color: var(--awatef-green-700);
 }
 
 .privacy-intro {
@@ -558,19 +567,19 @@ const contact = {
   margin-bottom: 55px;
   padding: 25px 28px;
 
-  border-left: 2px solid #c7a46a;
-  background: #fff9ee;
+  border-left: 2px solid var(--awatef-gold-dark);
+  background: var(--awatef-cream-dark);
 }
 
 .privacy-intro svg {
   flex-shrink: 0;
-  color: #a5783f;
+  color: var(--awatef-gold-dark);
 }
 
 .privacy-intro p {
   margin: 0;
 
-  color: #5b6257;
+  color: var(--awatef-green-700);
   font-size: 14px;
   line-height: 1.9;
 }
@@ -583,14 +592,18 @@ const contact = {
   padding: 0 0 38px;
   margin-bottom: 42px;
 
-  border-bottom: 1px solid #ded0b8;
+  border-bottom: 1px solid color-mix(
+    in srgb,
+    var(--awatef-gold-dark) 35%,
+    transparent
+  );
 }
 
 .section-number {
   display: block;
   margin-bottom: 12px;
 
-  color: #b78a4a;
+  color: var(--awatef-gold-dark);
   font-family: Georgia, serif;
   font-size: 15px;
   letter-spacing: 2px;
@@ -599,7 +612,7 @@ const contact = {
 .privacy-block h2 {
   margin: 0 0 20px;
 
-  color: #06483e;
+  color: var(--awatef-green-700);
   font-family: Georgia, serif;
   font-size: clamp(23px, 3vw, 30px);
   font-weight: 400;
@@ -608,7 +621,7 @@ const contact = {
 
 .privacy-block p,
 .privacy-block li {
-  color: #5a6158;
+  color: var(--awatef-green-700);
   font-size: 14px;
   line-height: 2;
 }
@@ -628,18 +641,18 @@ const contact = {
 }
 
 .privacy-block li::marker {
-  color: #b78a4a;
+  color: var(--awatef-gold-dark);
 }
 
 .privacy-block a {
-  color: #0b6757;
+  color: var(--awatef-green-700);
   text-decoration: underline;
   text-underline-offset: 3px;
   overflow-wrap: anywhere;
 }
 
 .privacy-block a:hover {
-  color: #b78a4a;
+  color: var(--awatef-gold-dark);
 }
 
 /* ===================================
@@ -654,10 +667,10 @@ const contact = {
   padding: 20px 24px;
   margin-top: 18px;
 
-  background: #fff9ee;
-  border: 1px solid #e7d9c1;
+  background: var(--awatef-cream-dark);
+  border: 1px solid var(--awatef-gold);
 
-  color: #244b40;
+  color: var(--awatef-green-700);
   font-size: 14px;
   line-height: 1.6;
 }
@@ -667,7 +680,6 @@ const contact = {
   font-size: 18px;
   font-weight: 400;
 }
-
 
 /* ===================================
    CONTACT FOOTER
@@ -680,8 +692,8 @@ const contact = {
 
   padding: 52px 25px;
 
-  background: #06483e;
-  color: #fff8ed;
+  background: var(--awatef-green-700);
+  color: var(--awatef-cream);
 
   text-align: center;
 }
@@ -691,7 +703,7 @@ const contact = {
 }
 
 .privacy-contact > span {
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-family: 'Amiri', Georgia, serif;
   font-size: 24px;
 }
@@ -708,7 +720,7 @@ const contact = {
   max-width: 420px;
   margin: 0 0 25px;
 
-  color: #e1d9c9;
+  color: var(--awatef-cream-dark);
   font-size: 14px;
   line-height: 1.8;
 }
@@ -722,9 +734,9 @@ const contact = {
   max-width: 100%;
   padding: 14px 24px;
 
-  border: 1px solid #d6b478;
+  border: 1px solid var(--awatef-gold);
 
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-size: 14px;
   text-decoration: none;
   overflow-wrap: anywhere;
@@ -735,8 +747,8 @@ const contact = {
 }
 
 .privacy-contact a:hover {
-  background: #d6b478;
-  color: #06483e;
+  background: var(--awatef-gold);
+  color: var(--awatef-green-700);
 }
 
 /* ===================================

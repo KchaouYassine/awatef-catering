@@ -1,28 +1,21 @@
-
 :root {
-  --awatef-green: #06483e;
-  --awatef-green-dark: #032f29;
-  --awatef-gold: #d6b478;
-  --awatef-cream: #f7f0e3;
-  --awatef-text: #173c35;
-}
+  /* Awatef Greens */
+  --awatef-green-50: #cee2df;
+  --awatef-green-100: #9cc4bf;
+  --awatef-green-300: #68a59e;
+  --awatef-green-500: #36877e;
+  --awatef-green-700: #04695e;
 
-body {
-  margin: 0;
-  background-color: var(--awatef-cream);
-  color: var(--awatef-text);
-  font-family: 'Georgia', serif;
-}
+  /* Awatef Warm Colors */
+  --awatef-gold: #fdd094;
+  --awatef-gold-light: #ffdaa9;
+  --awatef-cream: #fff6ea;
+  --awatef-cream-dark: #ffedd4;
+  --awatef-gold-dark: #b9874b;
 
-.btn-awatef {
-  background: var(--awatef-gold);
-  color: var(--awatef-green-dark);
-  border: none;
-  border-radius: 50px;
-  padding: 12px 28px;
-  transition: transform 0.3s ease;
-}
-
-.btn-awatef:hover {
-  transform: translateY(-3px);
+  /* Semantic Colors */
+  --color-primary: var(--awatef-green-700);
+  --color-secondary: var(--awatef-green-500);
+  --color-background: var(--awatef-cream);
+  --color-accent: var(--awatef-gold);
 }

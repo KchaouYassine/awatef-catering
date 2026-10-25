@@ -1,27 +1,3 @@
-
-<script setup>
-import {
-  ArrowLeft,
-  Mail,
-  Phone,
-  MapPin,
-  Building2
-} from 'lucide-vue-next'
-
-const company = {
-  name: 'Awatef Catering',
-
-  owner: 'Hebatullah Alakkab',
-  street: 'Mannheimer Straße 198',
-  postalCode: ' 67657',
-  city: 'Kaiseralautern',
-
-  email: 'heba.akkab@gmail.com',
-  phone: '0172 9058837',
-  phoneLink: '+491729058837'
-}
-</script>
-
 <template>
   <main class="imprint-page">
     <!-- HERO -->
@@ -211,14 +187,41 @@ const company = {
   </main>
 </template>
 
+
+
+<script setup>
+import {
+  ArrowLeft,
+  Mail,
+  Phone,
+  MapPin,
+  Building2
+} from 'lucide-vue-next'
+
+const company = {
+  name: 'Awatef Catering',
+
+  owner: 'Hebatullah Alakkab',
+  street: 'Mannheimer Straße 198',
+  postalCode: ' 67657',
+  city: 'Kaiseralautern',
+
+  email: 'heba.akkab@gmail.com',
+  phone: '0172 9058837',
+  phoneLink: '+491729058837'
+}
+</script>
+
+
+
 <style scoped>
 /* =====================================
    MAIN PAGE
 ===================================== */
 
 .imprint-page {
-  background: #f7f0e3;
-  color: #173f35;
+  background: var(--awatef-cream);
+  color: var(--awatef-green-700);
 }
 
 /* =====================================
@@ -229,19 +232,23 @@ const company = {
   position: relative;
   overflow: hidden;
 
-  padding: 145px 24px 95px;
+  padding: 95px 24px 95px;
 
   background:
     radial-gradient(
       ellipse at 50% 100%,
-      rgba(214, 180, 120, 0.11),
+      color-mix(
+        in srgb,
+        var(--awatef-gold) 11%,
+        transparent
+      ),
       transparent 60%
     ),
     linear-gradient(
       135deg,
-      #032f29,
-      #06483e,
-      #032f29
+      var(--awatef-green-700),
+      var(--awatef-green-500),
+      var(--awatef-green-700)
     );
 
   text-align: center;
@@ -256,7 +263,7 @@ const company = {
   display: block;
   margin-bottom: 12px;
 
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-family: 'Amiri', Georgia, serif;
   font-size: 30px;
 }
@@ -264,7 +271,7 @@ const company = {
 .imprint-hero h1 {
   margin: 0;
 
-  color: #fff8ed;
+  color: var(--awatef-cream);
   font-family: Georgia, serif;
   font-size: clamp(40px, 5vw, 65px);
   font-weight: 400;
@@ -273,7 +280,7 @@ const company = {
 
 .imprint-hero p {
   margin: 0;
-  color: #e3d8c5;
+  color: var(--awatef-cream-dark);
   font-size: 15px;
   line-height: 1.8;
 }
@@ -295,7 +302,12 @@ const company = {
 .header-ornament span {
   flex: 1;
   height: 1px;
-  background: rgba(214, 180, 120, 0.65);
+
+  background: color-mix(
+    in srgb,
+    var(--awatef-gold) 65%,
+    transparent
+  );
 }
 
 .header-ornament svg,
@@ -304,7 +316,7 @@ const company = {
   height: 29px;
 
   fill: none;
-  stroke: #d6b478;
+  stroke: var(--awatef-gold);
   stroke-width: 1.5;
   stroke-linejoin: round;
 }
@@ -329,7 +341,7 @@ const company = {
 
   margin-bottom: 48px;
 
-  color: #a5783f;
+  color: var(--awatef-gold-dark);
   font-size: 13px;
   text-decoration: none;
 
@@ -337,7 +349,7 @@ const company = {
 }
 
 .back-link:hover {
-  color: #06483e;
+  color: var(--awatef-green-700);
 }
 
 /* =====================================
@@ -348,14 +360,18 @@ const company = {
   padding-bottom: 40px;
   margin-bottom: 43px;
 
-  border-bottom: 1px solid #ded0b8;
+  border-bottom: 1px solid color-mix(
+    in srgb,
+    var(--awatef-gold-dark) 35%,
+    transparent
+  );
 }
 
 .section-number {
   display: block;
   margin-bottom: 12px;
 
-  color: #b78a4a;
+  color: var(--awatef-gold-dark);
   font-family: Georgia, serif;
   font-size: 15px;
   letter-spacing: 2px;
@@ -364,7 +380,7 @@ const company = {
 .imprint-block h2 {
   margin: 0 0 22px;
 
-  color: #06483e;
+  color: var(--awatef-green-700);
   font-family: Georgia, serif;
   font-size: clamp(24px, 3vw, 31px);
   font-weight: 400;
@@ -372,7 +388,7 @@ const company = {
 
 .imprint-block > p,
 .info-text {
-  color: #5a6158;
+  color: var(--awatef-green-700);
   font-size: 14px;
   line-height: 1.9;
 }
@@ -388,8 +404,8 @@ const company = {
 
   padding: 28px;
 
-  background: #fff9ee;
-  border: 1px solid #e7d9c1;
+  background: var(--awatef-cream-dark);
+  border: 1px solid var(--awatef-gold);
 }
 
 .company-icon,
@@ -402,16 +418,16 @@ const company = {
   width: 45px;
   height: 45px;
 
-  border: 1px solid #d7bd8f;
+  border: 1px solid var(--awatef-gold-dark);
   border-radius: 50%;
 
-  color: #a5783f;
+  color: var(--awatef-gold-dark);
 }
 
 .company-details h3 {
   margin: 0 0 13px;
 
-  color: #06483e;
+  color: var(--awatef-green-700);
   font-family: Georgia, serif;
   font-size: 23px;
   font-weight: 400;
@@ -419,7 +435,7 @@ const company = {
 
 .company-details p {
   margin: 5px 0;
-  color: #5a6158;
+  color: var(--awatef-green-700);
   font-size: 14px;
   line-height: 1.7;
 }
@@ -444,10 +460,10 @@ const company = {
   min-width: 0;
   padding: 20px;
 
-  background: #fff9ee;
-  border: 1px solid #e7d9c1;
+  background: var(--awatef-cream-dark);
+  border: 1px solid var(--awatef-gold);
 
-  color: #06483e;
+  color: var(--awatef-green-700);
   text-decoration: none;
 
   transition:
@@ -458,8 +474,13 @@ const company = {
 
 .contact-list a:hover {
   transform: translateY(-3px);
-  border-color: #b78a4a;
-  box-shadow: 0 8px 25px rgba(6, 72, 62, 0.07);
+  border-color: var(--awatef-gold-dark);
+
+  box-shadow: 0 8px 25px color-mix(
+    in srgb,
+    var(--awatef-green-700) 10%,
+    transparent
+  );
 }
 
 .contact-list a > div:last-child {
@@ -470,12 +491,12 @@ const company = {
 }
 
 .contact-label {
-  color: #a5783f;
+  color: var(--awatef-gold-dark);
   font-size: 12px;
 }
 
 .contact-value {
-  color: #06483e;
+  color: var(--awatef-green-700);
   font-size: 13px;
   overflow-wrap: anywhere;
 }
@@ -494,12 +515,12 @@ const company = {
 
 .address-row svg {
   flex-shrink: 0;
-  color: #a5783f;
+  color: var(--awatef-gold-dark);
 }
 
 .address-row p {
   margin: 0;
-  color: #244b40;
+  color: var(--awatef-green-700);
   font-size: 14px;
   line-height: 1.9;
 }
@@ -516,10 +537,10 @@ const company = {
   margin-top: 20px;
   padding: 15px 18px;
 
-  background: #f0e4ce;
-  border-left: 3px solid #b78a4a;
+  background: var(--awatef-cream-dark);
+  border-left: 3px solid var(--awatef-gold-dark);
 
-  color: #765b35;
+  color: var(--awatef-green-700);
   font-size: 12px;
   line-height: 1.8;
 }
@@ -535,8 +556,8 @@ const company = {
 
   padding: 55px 25px;
 
-  background: #06483e;
-  color: #fff8ed;
+  background: var(--awatef-green-700);
+  color: var(--awatef-cream);
 
   text-align: center;
 }
@@ -546,7 +567,7 @@ const company = {
 }
 
 .imprint-footer > span {
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-family: 'Amiri', Georgia, serif;
   font-size: 35px;
 }
@@ -562,7 +583,7 @@ const company = {
 .imprint-footer p {
   margin: 0 0 27px;
 
-  color: #e1d9c9;
+  color: var(--awatef-cream-dark);
   font-family: Georgia, serif;
   font-size: 14px;
   font-style: italic;
@@ -575,9 +596,9 @@ const company = {
 
   padding: 13px 25px;
 
-  border: 1px solid #d6b478;
+  border: 1px solid var(--awatef-gold);
 
-  color: #d6b478;
+  color: var(--awatef-gold);
   font-size: 13px;
   text-decoration: none;
 
@@ -587,8 +608,8 @@ const company = {
 }
 
 .imprint-footer a:hover {
-  background: #d6b478;
-  color: #06483e;
+  background: var(--awatef-gold);
+  color: var(--awatef-green-700);
 }
 
 /* =====================================
