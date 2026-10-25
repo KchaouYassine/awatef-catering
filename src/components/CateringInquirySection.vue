@@ -123,7 +123,7 @@ async function submitInquiry() {
       <!-- LEFT SIDE -->
       <div class="catering-intro">
         <div class="intro-eyebrow">
-          <span class="eyebrow-line"></span>
+          <!-- <span class="eyebrow-line"></span> -->
           <span lang="ar" dir="rtl">
             مناسباتكم أجمل مع عواطف
           </span>
@@ -640,8 +640,7 @@ async function submitInquiry() {
   display: flex;
   align-items: center;
   gap: 14px;
-
-  width: 190px;
+  width: 100%;
   margin: 30px 0;
 }
 

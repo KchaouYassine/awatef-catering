@@ -1,44 +1,3 @@
-
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import {
-  CNavbar,
-  CContainer,
-  CNavbarBrand,
-  CNavbarNav,
-  CNavItem,
-  CNavLink,
-} from '@coreui/vue'
-import { Instagram, MessageCircle, Menu, X, CalendarDays, Tiktok } from 'lucide-vue-next'
-
-const isScrolled = ref(false)
-const mobileMenuOpen = ref(false)
-
-const links = [
-  { label: 'Startseite', href: '#home' },
-  { label: 'Über uns', href: '#about' },
-  { label: 'Speisekarte', href: '#menu' },
-  { label: 'Kontakt', href: '#contact' },
-]
-
-const checkScroll = () => {
-  isScrolled.value = window.scrollY > 30
-}
-
-const closeMenu = () => {
-  mobileMenuOpen.value = false
-}
-
-onMounted(() => {
-  checkScroll()
-  window.addEventListener('scroll', checkScroll, { passive: true })
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', checkScroll)
-})
-</script>
-
 <template>
   <CNavbar
     class="awatef-navbar"
@@ -80,18 +39,25 @@ onUnmounted(() => {
           <Instagram :size="20" />
         </a>
 
-        <!-- WhatsApp-Link ergänzen, sobald die Nummer vorliegt -->
-        <a href="#contact" aria-label="Kontakt" class="social-link">
-          <MessageCircle :size="20" />
-        </a>
         <a
-          href="https://www.instagram.com/awatef_catering/"
+          href="https://www.tiktok.com/@awatefcatering"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Tiktol"
+          aria-label="Awatef Catering auf TikTok"
           class="social-link"
         >
-          <Tiktok :size="20" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M16.6 2c.2 2.1 1.4 3.4 3.4 3.5v3.4a9.4 9.4 0 0 1-3.4-1v6.8a6.4 6.4 0 1 1-6.4-6.4c.4 0 .8 0 1.2.1v3.5a3 3 0 1 0 1.8 2.8V2h3.4Z"
+            />
+          </svg>
         </a>
 
         <a href="#contact" class="catering-btn">
@@ -135,6 +101,48 @@ onUnmounted(() => {
     </CContainer>
   </CNavbar>
 </template>
+
+
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import {
+  CNavbar,
+  CContainer,
+  CNavbarBrand,
+  CNavbarNav,
+  CNavItem,
+  CNavLink,
+} from '@coreui/vue'
+import { Instagram, MessageCircle, Menu, X, CalendarDays } from 'lucide-vue-next'
+
+const isScrolled = ref(false)
+const mobileMenuOpen = ref(false)
+
+const links = [
+  { label: 'Startseite', href: '#home' },
+  { label: 'Über uns', href: '#about' },
+  { label: 'Speisekarte', href: '#menu' },
+  { label: 'Kontakt', href: '#contact' },
+]
+
+const checkScroll = () => {
+  isScrolled.value = window.scrollY > 30
+}
+
+const closeMenu = () => {
+  mobileMenuOpen.value = false
+}
+
+onMounted(() => {
+  checkScroll()
+  window.addEventListener('scroll', checkScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', checkScroll)
+})
+</script>
 
 <style scoped>
 .awatef-navbar {

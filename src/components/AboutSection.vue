@@ -354,6 +354,7 @@ onUnmounted(() => observer?.disconnect())
 
 /* Tablet */
 
+
 @media (max-width: 1100px) {
   .about-inner {
     grid-template-columns: 55% 45%;

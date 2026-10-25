@@ -65,9 +65,15 @@
 
           <h1>{{ category.name }}</h1>
 
-          <div class="hero-divider">
+          <div class="hero-divider" aria-hidden="true">
             <span></span>
-            <span class="divider-flower">✥</span>
+
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M32 3 41 23 61 32 41 41 32 61 23 41 3 32 23 23Z"/>
+              <path d="M32 14 38 26 50 32 38 38 32 50 26 38 14 32 26 26Z"/>
+              <path d="M32 23V41M23 32H41"/>
+            </svg>
+
             <span></span>
           </div>
 
@@ -121,9 +127,15 @@
 
                 <h2>{{ dish.name }}</h2>
 
-                <div class="dish-divider">
+                <div class="dish-divider" aria-hidden="true">
                   <span></span>
-                  <span>✥</span>
+
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <path d="M32 3 41 23 61 32 41 41 32 61 23 41 3 32 23 23Z"/>
+                    <path d="M32 14 38 26 50 32 38 38 32 50 26 38 14 32 26 26Z"/>
+                    <path d="M32 23V41M23 32H41"/>
+                  </svg>
+
                   <span></span>
                 </div>
 
@@ -308,7 +320,7 @@ function imageUrl(image) {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 135px 24px 65px;
+  padding: 65px4px 65px;
   background:
     radial-gradient(
       ellipse at 50% 40%,
@@ -374,22 +386,28 @@ function imageUrl(image) {
 
 .hero-divider {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  color: #d6b478;
+  justify-content: center;
+  gap: 15px;
+
+  width: 220px;
+  margin: 28px auto;
 }
 
-.hero-divider > span:first-child,
-.hero-divider > span:last-child {
-  width: 70px;
+.hero-divider span {
+  flex: 1;
   height: 1px;
-  background: #d6b478;
+  background: rgba(214, 180, 120, 0.65);
 }
 
-.divider-flower {
-  font-size: 21px;
+.hero-divider svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+
+  stroke: #d6b478;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
 }
 
 .category-hero p {
@@ -548,20 +566,27 @@ function imageUrl(image) {
 .dish-divider {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin: 17px 0;
-  color: #b58b50;
+  justify-content: center;
+  gap: 12px;
+  width: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.dish-divider span:first-child,
-.dish-divider span:last-child {
-  width: 50px;
+.dish-divider span {
+  flex: 1;
   height: 1px;
-  background: #c7a46a;
+  background: rgba(183, 138, 74, 0.5);
 }
 
-.dish-divider span:nth-child(2) {
-  font-size: 14px;
+.dish-divider svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+
+  stroke: #b78a4a;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
 }
 
 .dish-content p {

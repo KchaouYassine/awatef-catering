@@ -29,10 +29,10 @@ import { ArrowRight } from 'lucide-vue-next'
           zu Ihren besonderen Anlässen.
         </p>
 
-        <!-- <a href="#menu" class="hero-button">
+        <a href="#menu" class="hero-button">
           Unsere Speisekarte entdecken
           <ArrowRight :size="20" :stroke-width="1.5" />
-        </a> -->
+        </a>
       </div>
     </div>
 
@@ -227,26 +227,102 @@ import { ArrowRight } from 'lucide-vue-next'
   }
 }
 
-/* Tablet */
-@media (max-width: 991px) {
+/* ===================================
+   TABLET HERO
+=================================== */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .hero-section {
+    min-height: 720px;
+    height: 100svh;
+    max-height: 900px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    overflow: hidden;
+  }
+
   .hero-content {
-    width: 62%;
-    padding-left: 6%;
+    width: 55%;
+    min-width: 0;
+
+    padding: 90px 5% 60px 6%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-text {
+    width: 100%;
+    max-width: 370px;
+  }
+
+  .hero-logo {
+    display: none;
+
+    width: 210px;
+    max-width: 100%;
+    height: auto;
+
+    margin-bottom: 22px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    line-height: 1.12;
+  }
+
+  .hero-text p {
+    max-width: 330px;
+    font-size: 13px;
+    line-height: 1.7;
   }
 
   .hero-image-container {
-    width: 52%;
+    display: block;
+
+    width: 45%;
+    height: 100%;
+
+    position: relative;
+    flex-shrink: 0;
+
+    clip-path: none;
+    overflow: hidden;
+  }
+
+  .hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 55% center;
+  }
+
+  .hero-button {
+    padding: 14px 20px;
+    font-size: 12px;
   }
 }
 
-/* Mobile */
+/* ===================================
+   MOBILE HERO
+=================================== */
 @media (max-width: 767px) {
   .hero-section {
+    min-height: 100svh;
     height: auto;
     max-height: none;
-    min-height: 100svh;
+
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero-image-container {
@@ -255,30 +331,44 @@ import { ArrowRight } from 'lucide-vue-next'
 
   .hero-content {
     width: 100%;
-    padding: 130px 7% 50px;
+    min-height: 100svh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 100px 7% 60px;
+    text-align: center;
   }
 
   .hero-text {
-    max-width: 100%;
+    width: 100%;
+    max-width: 420px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-logo {
-    width: 190px;
+    display: none;
   }
 
   .hero-text h1 {
     font-size: clamp(2.5rem, 9vw, 3.7rem);
+    text-align: center;
   }
 
-  .hero-image-container {
-    position: relative;
-    width: 100%;
-    height: 360px;
-    min-height: 300px;
-    clip-path: ellipse(85% 95% at 60% 100%);
+  .hero-text p {
+    text-align: center;
   }
 
   .hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 15px 22px;
     font-size: 14px;
   }

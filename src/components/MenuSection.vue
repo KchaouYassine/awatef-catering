@@ -18,7 +18,7 @@
 
         <h2>Unsere Speisekarte</h2>
 
-        <div class="gold-line"></div>
+        <!-- <div class="gold-line"></div> -->
 
       </header>
 
