@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import HomePage from '../pages/HomePage.vue'
 import CategoryPage from '../pages/CategoryPage.vue'
+import PrivacyPage from '../pages/PrivacyPage.vue'
+
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,6 +19,11 @@ const router = createRouter({
       name: 'category',
       component: CategoryPage,
       props: true
+    },
+    {
+      path: '/datenschutz',
+      name: 'datenschutz',
+      component: PrivacyPage
     }
   ],
 
