@@ -4,9 +4,9 @@ import { ArrowLeft, Mail, ShieldCheck } from 'lucide-vue-next'
 
 const contact = {
   business: 'Awatef Catering',
-  responsible: '[VOLLSTÄNDIGEN NAMEN EINTRAGEN]',
-  street: '[STRASSE UND HAUSNUMMER]',
-  city: '[POSTLEITZAHL UND ORT]',
+  responsible: 'Hebatullah Alakkab',
+  street: 'Mannheimer Straße198',
+  city: ' 67657 Kaiseralautern',
   email: 'heba.akkab@gmail.com',
   phone: '0172 9058837'
 }

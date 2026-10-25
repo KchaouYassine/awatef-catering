@@ -11,11 +11,10 @@ import {
 const company = {
   name: 'Awatef Catering',
 
-  // Vor Veröffentlichung ergänzen
-  owner: '[Vor- und Nachname der Inhaberin]',
-  street: '[Straße und Hausnummer]',
-  postalCode: '[PLZ]',
-  city: '[Ort]',
+  owner: 'Hebatullah Alakkab',
+  street: 'Mannheimer Straße 198',
+  postalCode: ' 67657',
+  city: 'Kaiseralautern',
 
   email: 'heba.akkab@gmail.com',
   phone: '0172 9058837',
