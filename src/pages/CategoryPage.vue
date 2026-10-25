@@ -327,7 +327,7 @@ function imageUrl(image) {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 110px 24px 65px;
+  padding: 65px 24px 65px;
 
   background: radial-gradient(
     ellipse at 50% 40%,
