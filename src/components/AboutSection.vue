@@ -156,7 +156,7 @@ onUnmounted(() => observer?.disconnect())
 .arabic-title {
   display: block;
   width: fit-content;
-  color: var(--awatef-green-500);
+  color: var(--awatef-gold-dark);
   font-family: 'Amiri', serif;
   font-size: 2.7rem;
   line-height: 1.3;
@@ -173,7 +173,7 @@ onUnmounted(() => observer?.disconnect())
 .gold-rule {
   width: 58px;
   height: 2px;
-  background: var(--awatef-gold);
+  background: var(--awatef-gold-dark);
   margin-bottom: 28px;
 }
 
@@ -200,6 +200,7 @@ onUnmounted(() => observer?.disconnect())
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   margin-top: 38px;
+  color: var(--awatef-gold)
 }
 
 .value {
@@ -210,6 +211,8 @@ onUnmounted(() => observer?.disconnect())
   font-family: Georgia, serif;
   font-size: 14px;
   line-height: 1.35;
+  color: var(--awatef-gold-dark);
+
 }
 
 .value-icon {
@@ -219,10 +222,9 @@ onUnmounted(() => observer?.disconnect())
   width: 58px;
   height: 58px;
 
-  border: 1px solid var(--awatef-green-500);
+  border: 1px solid var(--awatef-gold-dark);
   border-radius: 50%;
-  color: var(--awatef-green-500);
-
+  color: var(--awatef-gold-dark);
   margin-bottom: 12px;
 }
 
